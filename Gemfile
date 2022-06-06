@@ -76,3 +76,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+gem "dotenv-rails", groups: [:development, :test]
+
+gem "cloudinary"
+gem 'date_validator', '~> 0.10.0'
