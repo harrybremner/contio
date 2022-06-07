@@ -57,9 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
     t.date "start_date"
     t.date "end_date"
     t.integer "total_price"
+    t.bigint "client_id"
+    t.bigint "contractor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.index ["client_id"], name: "index_projects_on_client_id"
+    t.index ["contractor_id"], name: "index_projects_on_contractor_id"
   end
 
   create_table "sub_tasks", force: :cascade do |t|
@@ -87,15 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
-  create_table "user_projects", force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_user_projects_on_project_id"
-    t.index ["user_id"], name: "index_user_projects_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,8 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "users"
+  add_foreign_key "projects", "users", column: "client_id"
+  add_foreign_key "projects", "users", column: "contractor_id"
   add_foreign_key "sub_tasks", "tasks"
   add_foreign_key "tasks", "projects"
-  add_foreign_key "user_projects", "projects"
-  add_foreign_key "user_projects", "users"
 end

@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
-  has_many :user_projects, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :users, through: :user_projects
+  belongs_to :client, class_name: "User"
+  belongs_to :contractor, class_name: "User"
   validates :name, presence: true
   validates :description, presence: true
   validates :budget, presence: true
