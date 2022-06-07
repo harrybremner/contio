@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :messages, dependent: :destroy
   has_one_attached :photo
-  has_many :projects_as_client, class_name: "Project", foreign_key: :client_id
-  has_many :projects_as_contractor, class_name: "Project", foreign_key: :contractor_id
+  has_many :projects_as_client, class_name: "Project", foreign_key: :client_id, dependent: :destroy
+  has_many :projects_as_contractor, class_name: "Project", foreign_key: :contractor_id, dependent: :destroy
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_152737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "budget"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.date "start_date"
     t.date "end_date"
     t.integer "total_price"
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
 
   create_table "sub_tasks", force: :cascade do |t|
     t.bigint "task_id", null: false
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
     t.integer "price"
     t.date "start_date"
     t.date "end_date"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.string "priority"
     t.boolean "approved"
     t.datetime "created_at", null: false
@@ -102,6 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_151111) do
     t.boolean "is_contractor"
     t.string "address"
     t.string "phone_number"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
