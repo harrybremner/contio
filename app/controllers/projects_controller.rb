@@ -23,5 +23,5 @@ class ProjectsController < ApplicationController
 
   def messages_index
   end
-  
+
 end

@@ -7,8 +7,7 @@ class TasksController < ApplicationController
 
   def show
     @user = current_user
-    @task = Task.find(params[:task_id])
-    authorize @task
+    @task = Task.find(params[:id])
   end
 
   def create
