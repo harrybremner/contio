@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+    if @user.is_contractor
+      @projects = Project.where(contractor: @user)
+    else
+      @projects = Project.where(client: @user)
+    end
   end
 
   def destroy

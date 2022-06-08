@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :sub_tasks, only: [:create, :update]
     end
   end
-  resources :messages, only: [:create, :destroy]
+  resources :messages, only: [:destroy]
   resources :tasks, only: [:destroy]
   resources :sub_tasks, only: [:destroy]
   resource :users, only: [:show, :destroy]

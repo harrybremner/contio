@@ -14,6 +14,7 @@ We must do <% if Project.contractor? %>
       <div class="profile-box profile-information">
               <p><%= @user.email %> </p>
               <p><%= @user.phone_number %> </p>
+              <p><%= @projects.first.id %> </p>
             <div class="profile-button">
               <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-ghost"%>
             </div>
