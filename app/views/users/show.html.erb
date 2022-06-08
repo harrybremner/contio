@@ -2,3 +2,22 @@
 So in this page we are showing the user profile page.
 If they are a client, they cannot add any projects, tasks, subtasks.
 We must do <% if Project.contractor? %>
+
+<div class="profile-grid">
+  <div class="profile-column-left">
+      <div class="profile-image">
+        <% if @user.photo.key %>
+          <%= cl_image_tag current_user.photo.key, class: "card-img-top", style: "border-radius: 5px; max-height: 100%; object-fit: cover", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+      </div>
+      <h3 class="profile-header"><%=@user.first_name%> <%= @user.last_name %></h3>
+      <div class="profile-box profile-information">
+              <p><%= @user.email %> </p>
+              <p><%= @user.phone_number %> </p>
+              <p><%= @projects.first.id %> </p>
+            <div class="profile-button">
+              <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-ghost"%>
+            </div>
+      </div>
+    </div>
+  </div>

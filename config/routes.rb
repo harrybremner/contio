@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :projects, except: [:new, :edit] do
-    resources :messages, only: [:index]
+    resources :messages, only: [:index, :create]
     resources :tasks, only: [:create, :update, :show] do
       resources :sub_tasks, only: [:create, :update]
     end
   end
-  resources :messages, only: [:create, :destroy]
+  resources :messages, only: [:destroy]
   resources :tasks, only: [:destroy]
   resources :sub_tasks, only: [:destroy]
-  resource :users, only: [:show]
-  get "/messages", to: "projects#messages_index"
+  resource :users, only: [:show, :destroy]
+  get "/inbox", to: "mesages#inbox"
 end
 
 
