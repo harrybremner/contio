@@ -83,3 +83,5 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem 'date_validator', '~> 0.10.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem "simple_calendar", "~> 2.4"
