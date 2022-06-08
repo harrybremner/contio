@@ -3,3 +3,22 @@ So in this page we are showing the overview of all the tasks (it is essentially 
 with a bit of info on the project)
 If they are a client, they cannot add edit the project or task or add new ones.
 We must do <% if Project.contractor? %>
+<h1>PROJECT OVERVIEW</h1>
+
+tasks:
+<ul>
+<% @project.tasks.each do |task|%>
+<li><%=  link_to task.name,  project_task_path(@project, task) %></li>
+<li><%=  task.description %></li>
+<li><%=  task.price %></li>
+<li><%=  task.start_date %></li>
+<li><%=  task.end_date %></li>
+<li><%=  task.completed? %></li>
+<li><%=  task.priority? %></li>
+<li><%=  task.approved? %></li>
+<li><%=  task.created_at %></li>
+<li><%=  task.updated_at %></li>
+
+<br>
+<% end %>
+</ul>

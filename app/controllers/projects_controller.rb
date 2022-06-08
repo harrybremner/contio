@@ -43,8 +43,6 @@ class ProjectsController < ApplicationController
   def destroy
   end
 
-  def messages_index
-  end
 
   private
 

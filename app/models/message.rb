@@ -1,14 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :user
+  belongs_to :project
   validates :content, presence: true
   has_many_attached :files
 
-  def show
-  end
-
-  def create
-  end
-
-  def destroy
-  end
 end
