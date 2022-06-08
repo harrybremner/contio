@@ -3,3 +3,17 @@ So in this page we are showing the overview of all the subtasks (it is essential
 with probably a bit of info on the task)
 If they are a client, they cannot add edit the task or subtasks or add new ones.
 We must do <% if Project.contractor? %>
+<h1>TASK OVERVIEW</h1>
+
+<%= @task.sub_tasks.count %>
+subtasks:
+<ul>
+<% @task.sub_tasks.each do |sub_task|%>
+<li><%=  sub_task.name %></li>
+<li><%=  sub_task.description %></li>
+<li><%=  sub_task.created_at %></li>
+<li><%=  sub_task.updated_at %></li>
+<li><%=  sub_task.completed? %></li>
+<br>
+<% end %>
+</ul>
