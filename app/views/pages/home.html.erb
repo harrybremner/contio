@@ -1,2 +1,4 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %>
+  <%= date %>
+<% end %>

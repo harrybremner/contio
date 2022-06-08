@@ -1,30 +1,25 @@
 class TasksController < ApplicationController
 
-  def index
-    authorize @task
-    @tasks = Task.all
-  end
-
   def show
-    @user = current_user
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    if @project.client == current_user || @project.contractor == current_user
+      @user = current_user
+      @task = Task.find(params[:id])
+      @sub_tasks = SubTask.all
+    else
+      authorization_error
+    end
   end
 
   def create
+    @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
-    @task.user = current_user
-    @task.user = @user
+    @task.project = @project
     @task.save
     redirect_to task_path(@task)
   end
 
-  def edit
-    authorize @task
-    @task = Task.find(params[:id])
-  end
-
   def update
-    authorize @task
     @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to user_path(current_user)
@@ -47,4 +42,9 @@ class TasksController < ApplicationController
                                  :price, :start_date, :end_date,
                                  :completed, :priority, :approved)
   end
+
+  def authorization_error
+    redirect_to root_path, alert: 'You are not authorized to see that project'
+  end
+
 end

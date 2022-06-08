@@ -1,11 +1,5 @@
 class SubTasksController < ApplicationController
 
-  def show
-    @user = current_user
-    @task = Task.find(params[:task_id])
-    @sub_task = SubTask.find(params[:id])
-  end
-
   def update
     @sub_task = SubTask.find(params[:id])
     if @sub_task.update(sub_task_params)
@@ -38,4 +32,9 @@ class SubTasksController < ApplicationController
   def sub_task_params
     params.require(:sub_task).permit(:completed, :name, :description)
   end
+
+  def authorization_error
+    redirect_to root_path, alert: 'You are not authorized to see that project'
+  end
+
 end
