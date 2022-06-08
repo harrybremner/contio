@@ -107,6 +107,7 @@ GEM
       rest-client (>= 2.0.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    date (3.2.2)
     date_validator (0.10.0)
       activemodel (>= 3)
       activesupport (>= 3)
@@ -285,6 +286,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -292,6 +294,7 @@ DEPENDENCIES
   bootsnap
   capybara
   cloudinary
+  date
   date_validator (~> 0.10.0)
   debug
   devise

@@ -2,3 +2,36 @@
 So in this page we are showing the overview of all the projects (project index page or dashboard)
 If they are a client, they cannot add edit the project or create another one. Only contractors can.
 We must do <% if Project.contractor? %>
+
+Today:
+<div>
+  <%= @time.strftime("%d")%>
+  <%= @time.strftime("%B")%>
+</div>
+
+Summary:
+<div>
+  <ul>
+    <li> <%= @in_progress_projects %> on going projects</li>
+    <li> <%= @in_progress_tasks %> on going tasks</li>
+    <li> <%= @completed_tasks %> completed tasks </li>
+  </ul>
+</div>
+
+
+
+Projects:
+<% @projects.each do |project| %>
+  <ul>
+    <li><%= project.name %></li>
+    <li>for <%= project.client.first_name + " " + project.client.last_name%></li>
+    <li>Due in: <%=((project.end_date - @time).to_i)%> days</li>
+    <li><%= project.client.address%></li>
+    <li><%= link_to "See project", project_path(project)%></li>
+  </ul>
+<% end %>
+
+<% if @user.is_contractor? %>
+  <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
+  <%= render "form", project: @project %>
+<% end %>

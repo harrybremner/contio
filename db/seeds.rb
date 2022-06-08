@@ -15,6 +15,11 @@ SubTask.destroy_all
 
 puts "Creating new instances for User, Project, Task & Subtask..."
 
+client = User.create(first_name: "Unassigned", last_name: "Unassigned", email: "unassigned@gmail.com", password: "123456", is_contractor: false, address: "Unassigned")
+contractor = User.create(first_name: "Test", last_name: "Test", email: "test@gmail.com", password: "123456", is_contractor: true, address: "Unassigned")
+
+
+
 5.times do
   contractor = User.create(first_name: Faker::Name.unique.name, last_name: Faker::Name.unique.name, email: Faker::Internet.email, password: "123456", is_contractor: true, address: Faker::Address.street_address)
 
