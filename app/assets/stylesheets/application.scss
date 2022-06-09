@@ -16,3 +16,8 @@
 // Simple calendar Css files
 @import "simple_calendar";
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+}

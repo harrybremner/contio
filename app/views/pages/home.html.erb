@@ -4,8 +4,16 @@
 <%# <% end %>
 
 
-  <div class="content">
+  <div class="content cards">
     <div class="content-inside">
-      content
+          <h3 class="profile-header"><%=@user.first_name%> <%= @user.last_name %></h3>
+          <div class="profile-box profile-information">
+                  <p><%= @user.email %> </p>
+                  <p><%= @user.phone_number %> </p>
+                  <p><%= @projects.first.id %> </p>
+                <div class="profile-button">
+                  <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-ghost"%>
+                </div>
+          </div>
     </div>
   </div>
