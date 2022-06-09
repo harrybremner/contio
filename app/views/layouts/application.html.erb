@@ -17,6 +17,8 @@
     <div class="container">
       <%= yield %>
     </div>
-    <%= render "shared/footer" %>
+  <% unless @hide_mobile_footer %>
+    <%= render 'shared/mobile_footer' %>
+  <% end %>
   </body>
 </html>

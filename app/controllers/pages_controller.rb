@@ -3,11 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
-    if @user.is_contractor
-      @projects = Project.where(contractor: @user)
-    else
-      @projects = Project.where(client: @user)
-    end
+    @hide_mobile_footer = true
   end
 
 end

@@ -1,6 +1,13 @@
 class MessagesController < ApplicationController
 
   def inbox
+    @user = current_user
+    # user projects
+    if @user.is_contractor
+      @projects = Project.where(contractor: @user)
+    else
+      @projects = Project.where(client: @user)
+    end
   end
 
   def index

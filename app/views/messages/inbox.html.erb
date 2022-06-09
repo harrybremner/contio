@@ -3,4 +3,20 @@ all projects (message index page for projects). Similar to opening page of whats
 We need to only show messages related to projects in which the user is associated.
 This view is controlled by the messages_index action in the projects_controller %>
 
-
+<div class="container">
+  <div class="d-flex justify-content-between mt-2">
+    <% @projects.each do |project| %>
+      <ul>
+        <%= cl_image_tag project.messages.last.user.photo.key, class: "inbox-profile-picture" %>
+        <% if project.messages.last.user = current_user %>
+          <li>From me</li>
+        <% else %>
+          <li>From <%= project.messages.last.user.first_name %></li>
+        <% end %>
+        <li><%=project.messages.last.content%> </li>
+        <li><%= project.messages.last.created_at%></li>
+        <li><%= link_to "See message", project_messages_path(project)%></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

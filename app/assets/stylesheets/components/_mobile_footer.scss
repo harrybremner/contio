@@ -1,0 +1,30 @@
+
+
+.mobile-footer {
+  flex-shrink: 0;
+  width: 100%;
+  height: 50px;
+  background: $dark-blue;
+  color: rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  position: sticky;
+  bottom: 0;
+}
+.mobile-footer-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.mobile-footer-links a {
+  color: white;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.mobile-footer-links a:hover {
+  opacity: 1;
+}
+.plus {
+  color: $orange;
+}
