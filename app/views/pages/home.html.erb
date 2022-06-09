@@ -4,8 +4,29 @@
 <%# <% end %>
 
 
-  <div class="content">
+  <%# <div class="content cards">
     <div class="content-inside">
-      content
+      <br>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit inventore, aliquid placeat eaque eum animi impedit at, labore quasi dolorem, expedita dolor in blanditiis eius deserunt quod! Fuga, facere sint. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae at iure, perferendis sunt eius similique nisi aut ratione corporis minus totam enim unde voluptatem qui, cumque illo accusamus repudiandae vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti sit blanditiis saepe voluptate, explicabo rerum laborum expedita assumenda unde eveniet, dolorum minima excepturi laboriosam, amet aspernatur dignissimos! Magnam, ad esse.</p>
+
     </div>
+  </div> %>
+
+<div class="cover d-flex align-items-center justify-content-center">
+  <div class="text-left text-white">
+      <div class="justify-content-center">
+        <h1>Contio</h1>
+      </div>
+      <div class="justify-content-center">
+          <% if current_user %>
+            <h1 class="typed-js">Hey, <%= @user.first_name %>.</h1>
+      </div>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary"%>
+      </div>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary"%>
+        <% end %>
   </div>
+  </div>
+</div>
+  <%= render "shared/footer" %>
