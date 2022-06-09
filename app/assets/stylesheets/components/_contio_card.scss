@@ -1,0 +1,89 @@
+.main-container-all {
+  padding-left: 1rem;
+  padding-right: 1rem;
+    background-color: $off-white;
+    padding-top: 10px;
+
+}
+
+.contio-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.contio-card {
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: $white;
+  position: relative;
+}
+
+.flex-div {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  
+}
+
+
+
+.index-card {
+
+}
+
+.dashboard-card {
+  width: 159px;
+}
+
+.summary-card {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+  height: 140px;
+  color: $gray;
+  border-left: 0.7px solid gray;
+  font-size: 14px;
+}
+
+.icon {
+  background-color: $off-white;
+  padding: 8px;
+  border-radius: 15px;
+  font-size: 20px;
+  color: $gray;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#summary-number {
+  font-size: 16px;
+}
+
+#title {
+  font-size: 16px;
+  color: $gray;
+  position: absolute;
+  top: 12px;
+}
+
+#date-day {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+#month {
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  top: 96px;
+}
+
+.date-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+}
