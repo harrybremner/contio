@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:destroy]
   resources :sub_tasks, only: [:destroy]
   resource :users, only: [:show, :destroy]
-  get "/inbox", to: "mesages#inbox"
+  get "/inbox", to: "messages#inbox"
 end
 
 

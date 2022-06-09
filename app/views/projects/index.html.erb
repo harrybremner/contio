@@ -4,19 +4,20 @@ If they are a client, they cannot add edit the project or create another one. On
 We must do <% if Project.contractor? %>
 
 Today:
-<div>
+<div class="card">
   <%= @time.strftime("%d")%>
   <%= @time.strftime("%B")%>
 </div>
 
 Summary:
-<div>
+<div class="card">
   <ul>
     <li> <%= @in_progress_projects %> on going projects</li>
     <li> <%= @in_progress_tasks %> on going tasks</li>
     <li> <%= @completed_tasks %> completed tasks </li>
   </ul>
 </div>
+
 
 
 
