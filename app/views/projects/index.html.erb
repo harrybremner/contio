@@ -24,7 +24,11 @@ Projects:
 <% @projects.each do |project| %>
   <ul>
     <li><%= project.name %></li>
-    <li>for <%= project.client.first_name + " " + project.client.last_name%></li>
+    <% if @user.is_contractor %>
+      <li>for <%= project.client.first_name + " " + project.client.last_name%></li>
+    <% else %>
+      <li>by <%= project.contractor.first_name + " " + project.contractor.last_name%></li>
+    <% end %>
     <li>Due in: <%=((project.end_date - @time).to_i)%> days</li>
     <li><%= project.client.address%></li>
     <li><%= link_to "See project", project_path(project)%></li>
