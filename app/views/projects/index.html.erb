@@ -3,38 +3,67 @@ So in this page we are showing the overview of all the projects (project index p
 If they are a client, they cannot add edit the project or create another one. Only contractors can.
 We must do <% if Project.contractor? %>
 
-Today:
-<div class="card">
-  <%= @time.strftime("%d")%>
-  <%= @time.strftime("%B")%>
+<h1>Work Dashboard</h1>
+<h3>Summary</h3>
+  <div class="contio-card flex-div">
+    <div class="date-card">
+        <div style="margin:0" id="title">Today:</div>
+        <div style="margin:0" id="date-day"><%= @time.strftime("%d")%></div>
+        <div style="margin:0" id="month"><%= @time.strftime("%B")%></div>
+    </div>
+
+
+    <div class="summary-card">
+      <div><i class="fa-solid icon fa-list-check"></i> <strong id="summary-number"><%= @in_progress_projects %></strong>  on going projects</div>
+      <div><i class="fa-solid icon fa-diagram-project" style="font-size: 17.777px"></i> <strong id="summary-number"> <%= @in_progress_tasks %></strong> on going tasks</div>
+      <div><i class="fa-solid icon fa-circle-check"></i> <strong id="summary-number"><%= @completed_tasks %></strong> completed tasks</div>
+    </div>
+  </div>
+
+
+
+
+<h6>Summary:</h6>
+
+
+
+
+
+<h6>Projects:</h6>
+
+<div class="contio-cards">
+  <% @projects.each do |project| %>
+    <div class="contio-card dashboard-card">
+        <div class="flex-div">
+          <div id="title">
+              <div><%= project.name %></div>
+              <div>
+                <% if @user.is_contractor %>
+                For <%= project.client.first_name + " " + project.client.last_name%>
+                <% else %>
+                By <%= project.contractor.first_name + " " + project.contractor.last_name%>
+                <% end %>
+              </div>
+          </div>
+          <div>
+            <i class="fa-solid fa-circle-n"></i>
+            <i class="fa-solid fa-grip-dots"></i>
+          </div>
+
+        </div>
+
+        <div class="flex-div">
+          <i class="fa-solid fa-chart-pie"></i>
+          <p>Due in: <br><%=((project.end_date - @time).to_i)%> days</p>
+        </div>
+        <div>
+        <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
+        </div>
+        <%= link_to "See project", project_path(project)%>
+    </div>
+  <% end %>
 </div>
 
-Summary:
-<div class="card">
-  <ul>
-    <li> <%= @in_progress_projects %> on going projects</li>
-    <li> <%= @in_progress_tasks %> on going tasks</li>
-    <li> <%= @completed_tasks %> completed tasks </li>
-  </ul>
-</div>
-
-
-
-
-Projects:
-<% @projects.each do |project| %>
-  <ul>
-    <li><%= project.name %></li>
-    <% if @user.is_contractor %>
-      <li>for <%= project.client.first_name + " " + project.client.last_name%></li>
-    <% else %>
-      <li>by <%= project.contractor.first_name + " " + project.contractor.last_name%></li>
-    <% end %>
-    <li>Due in: <%=((project.end_date - @time).to_i)%> days</li>
-    <li><%= project.client.address%></li>
-    <li><%= link_to "See project", project_path(project)%></li>
-  </ul>
-<% end %>
 
 <% if @user.is_contractor? %>
   <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
