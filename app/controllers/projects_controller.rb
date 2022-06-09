@@ -3,10 +3,18 @@ class ProjectsController < ApplicationController
   def index
     @user = current_user
     # user projects
-    @projects = Project.where(contractor: @user)
+    if @user.is_contractor
+      @projects = Project.where(contractor: @user)
+    else
+      @projects = Project.where(client: @user)
+    end
 
     # in progress projects
-    @in_progress_projects = Project.where(contractor: @user, completed: false).count
+    if @user.is_contractor
+      @in_progress_projects = Project.where(contractor: @user, completed: false).count
+    else
+      @in_progress_projects = Project.where(client: @user, completed: false).count
+    end
 
     # need to make this more
     @in_progress_tasks = Task.where(completed: false).count
@@ -19,8 +27,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-      # @projects = Project.where(contractor: current_user)
-      # @project = @projects.find(params[:id])
+      @project = Project.find(params[:id])
+      if @project.client == current_user || @project.contractor == current_user
+        @user = current_user
+        @tasks = Task.all
+      else
+        authorization_error
+      end
   end
 
   def create
@@ -32,9 +45,6 @@ class ProjectsController < ApplicationController
     else
       render :index, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -49,6 +59,10 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :budget, :start_date, :end_date,
       :total_price, :contractor, :client, :description)
+  end
+
+  def authorization_error
+    redirect_to root_path, alert: 'You are not authorized to see that project'
   end
 
 end
