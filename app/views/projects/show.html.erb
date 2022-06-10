@@ -6,113 +6,60 @@ We must do <% if Project.contractor? %>
 
 
 
-<div class="container">                                                                            <%# MAIN CONTAINER %>
-
-        <div class="text-center">                                                        <%# PROJECT title  | - ROW 1 %>
-            <h1><%= @project.name %></h1>
-        </div>
-
-  <div class="border-bottom"></div>                                                                     <%# underline %>
+<div class="main-container-all">                                                                        <%# MAIN CONTAINER %>
+  <h1><%= @project.name %></h1>
+                                                                   <%# underline %>
 
         <div class="row">                                                         <%# General info row      | - ROW 1 %>
 
             <div class="col">                                                        <%# CLIENT COLUMN >    | - COL 1 %>
 
               <% if @user.is_contractor %>
-                <h3> Client name: </h3>
-                <p> <%= @project.client.first_name + " " + @project.client.last_name%> </p>
+                <p> Client name: </p>
+                <p><i class="fa-solid icon fa-list-check"></i> <%= @project.client.first_name + " " + @project.client.last_name%> </p>
                 <% else %>
-                <h3> Contractor: </h3>
-                <p><%= @project.contractor.first_name + " " + @project.contractor.last_name%> </p>
+                <p> Contractor: </p>
+                <p><i class="fa-solid icon fa-list-check"></i> <%= @project.contractor.first_name + " " + @project.contractor.last_name%> </p>
                 <% end %>
 
             </div>
 
             <div class="col">                                                          <%# DATE COLUMN >    | - COL 2 %>
 
-              <h3> Due Date: </h3>
-              <p> <%= @project.end_date %></p>
+              <p> Due Date: </p>
+              <p><i class="fa-solid icon fa-list-check"></i>  <%= @project.end_date %></p>
 
             </div>
 
         </div>                                                                                     <%# /MAIN INFO ROW %>
 
+                                                                   <%# underline %>
+        <p><strong>Description: </strong> </p>                   <%# DESCRIPTION HEADING   | - ROW 1 %>
 
-  <div class="border-bottom"></div>                                                                     <%# underline %>
-
-        <div class="row"><h4> Description: </h4>  </div>                          <%# DESCRIPTION HEADING   | - ROW 1 %>
-
-        <div class="row"><p> <%= @project.description %>     </p> </div>                             <%# /DESCRIPTION %>
+        <p> <%= @project.description %></p>                           <%# /DESCRIPTION %>
 
 
 
-
-  <div class="border-bottom"></div>                                                                     <%# underline %>
-
-        <div class="row">                                                               <%#    PROGRESS BAR | - ROW 1 %>
-
-          This is where the progress bar will go
-         <p>/////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////</p>
-         <p> ||_Pending__||_Done____||_To-do__</p>
-         <p> ||_3 tasks___||_7 tasks__||_2 tasks</p>
-
-        </div>                                                                                     <%# / PROGRESS BAR %>
-
-  <div class="border-bottom"></div>                                                                     <%# underline %>
-
-        <div class="row"> Tasks: </div>                                                  <%#Tasks header    | - ROW 1 %>
+      <div> Tasks: </div>                                                  <%#Tasks header    | - ROW 1 %>
 
       <% @project.tasks.each do |task| %>
-
-        <div class="row">                                                                      <%# task div | - ROW 1 %>
-
-
-            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-               73%
-            </div>                                                                               <%# /progress wheel  %>
-
-
-            <div class="col">                                                                      <%# task | - COL 2 %>
-
-
-              <div class="row">                                                                   <%# task name |ROW 1%>
-
-                <%=  link_to task.name,  project_task_path(@project, task) %>
-
-              </div>                                                                                 <%# /task name   %>
-
-              <div class="row">                                                           <%# no of subtasks | -ROW 2 %>
-
-                <%= task.sub_tasks.count %> Subtasks
-
-              </div>                                                                              <%# /no of subtasks %>
-
-
-            </div>                                                                                        <%# /task   %>
-
-
-            <div class="col">                                                         <%#task colour-date   | - COL 3 %>
-
-
-              <div class="row">                                                                 <%# task colour |ROW 1%>
-
-                <%=  task.priority %>
-
-              </div>                                                                                 <%# /task colour %>
-
-              <div class="row">                                                                   <%# task date |ROW 2%>
-
-                <%=  task.end_date %>
-
-              </div>                                                                                   <%# /task date %>
-
-
-            </div>                                                                               <%#/task colour-date %>
-
-        </div>                                                                                        <%# / task div  %>
-
-        <div class="border-bottom"></div>                                                               <%# underline %>
-
+        <div class="contio-card" id="task">
+          <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
+            <div class="flex-between">
+              <div class="flex-between">
+                <div id="progress-bar"><i class="fa-solid fa-circle-notch"></i></div>
+                <p>73%</p>                                                                           <%# /progress wheel  %>
+              </div>
+              <div>
+                  <div id="project.name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
+                  <%= task.sub_tasks.count %> Subtasks
+              </div>
+              <div>
+                  <%=  task.priority %>
+                  Due date: <%=  task.end_date %>
+              </div>
+          </div>
         <% end %>
-
+      </div>
+    <% end %>
 </div>                                                                                            <%# /MAIN CONTAINER %>
