@@ -6,6 +6,16 @@
   width: 56px;
   border-radius: 50%;
 }
+
+.profile-avatar {
+  width: 142px;
+  border-radius: 50%;
+  border: 5px solid $off-white;
+  position: absolute;
+  top: 150px;
+  left: 33%;
+}
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
