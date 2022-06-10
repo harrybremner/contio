@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   def show
     #for the show page we only show this if the user has access ie if that project is assigned to them (as the path will be /project/project_id)
     @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    @sub_task = SubTask.new
     if @project.client == current_user || @project.contractor == current_user
       @user = current_user
       @task = Task.find(params[:id])
@@ -16,8 +18,11 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
     @task.project = @project
-    @task.save
-    redirect_to task_path(@task)
+    if @task.save
+      redirect_to project_path(@project)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -39,9 +44,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description,
-                                 :price, :start_date, :end_date,
-                                 :completed, :priority, :approved)
+    params.require(:task).permit(:name, :description, :price, :start_date, :end_date, :priority)
   end
 
   def authorization_error

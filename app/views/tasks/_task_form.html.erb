@@ -1,0 +1,9 @@
+<%= simple_form_for [@project, @task] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date"} %>
+  <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date"} %>
+  <%= f.input :priority %>
+  <%= f.submit class: "btn-form" %>
+<% end %>

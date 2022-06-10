@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
   def show
     #for the show page we only show this if the user has access ie if that project is assigned to them (as the path will be /project/project_id)
       @project = Project.find(params[:id])
+      @task = Task.new
       if @project.client == current_user || @project.contractor == current_user
         @user = current_user
         @tasks = Task.all
