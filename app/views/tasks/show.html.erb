@@ -47,12 +47,33 @@ We must do <% if Project.contractor? %>
       <div class="row">                                                                        <%# task div | - ROW 1 %>
 
             <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-              <li><%=  sub_task.completed? %></li>
+
+            <% if sub_task.completed? %>
+              <i class="fa-regular fa-circle-check"></i>
+            <%else%>
+              <i class="fa-regular fa-circle-xmark"></i>
+            <% end %>
+
             </div>                                                                               <%# /progress wheel  %>
 
 
             <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-              <li><%=  sub_task.name %></li>
+
+
+              <div class="row">
+
+                <%=  sub_task.name %>
+
+              </div>
+
+
+              <div class="row">
+
+                <%=  sub_task.description %>
+
+              </div>
+
+
             </div>                                                                               <%# /progress wheel  %>
 
 
