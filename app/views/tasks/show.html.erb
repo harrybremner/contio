@@ -17,17 +17,19 @@ We must do <% if Project.contractor? %>
 
                   <div class="col">                                                  <%# CLIENT COLUMN >    | - COL 1 %>
 
-                    73%
+                      <div class="d-flex justify-content-center">
+                          <h1> 73% </h1>
+                      </div>
 
                   </div>
 
                   <div class="col">                                                    <%# DATE COLUMN >    | - COL 2 %>
 
                     <h3> Start Date: </h3>
-                    <p> 20/04/1969 </p>
+                    <%=  @task.start_date %>
 
                     <h3> Due Date: </h3>
-                    <p> 20/04/1969 </p>
+                    <%=  @task.end_date %>
 
                   </div>
 
