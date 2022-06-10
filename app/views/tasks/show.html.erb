@@ -3,17 +3,71 @@ So in this page we are showing the overview of all the subtasks (it is essential
 with probably a bit of info on the task)
 If they are a client, they cannot add edit the task or subtasks or add new ones.
 We must do <% if Project.contractor? %>
-<h1>TASK OVERVIEW</h1>
 
-<%= @task.sub_tasks.count %>
-subtasks:
-<ul>
+<div class="container">                                                                            <%# MAIN CONTAINER %>
+
+      <div class="text-center">                                                             <%# TASK title  | - ROW 1 %>
+                  <h1><%= @task.name %></h1>
+
+      </div>
+
+<div class="border-bottom"></div>                                                                       <%# underline %>
+
+      <div class="row">                                                           <%# General info row      | - ROW 1 %>
+
+                  <div class="col">                                                  <%# CLIENT COLUMN >    | - COL 1 %>
+
+                    73%
+
+                  </div>
+
+                  <div class="col">                                                    <%# DATE COLUMN >    | - COL 2 %>
+
+                    <h3> Start Date: </h3>
+                    <p> 20/04/1969 </p>
+
+                    <h3> Due Date: </h3>
+                    <p> 20/04/1969 </p>
+
+                  </div>
+
+      </div>                                                                                       <%# /MAIN INFO ROW %>
+
+<div class="border-bottom"></div>                                                                       <%# underline %>
+
+<%= @task.sub_tasks.count %> subtasks:  __________        =NEW SUBTASK +
+
+<div class="border-bottom"></div>
+
 <% @task.sub_tasks.each do |sub_task|%>
-<li><%=  sub_task.name %></li>
-<li><%=  sub_task.description %></li>
-<li><%=  sub_task.created_at %></li>
-<li><%=  sub_task.updated_at %></li>
-<li><%=  sub_task.completed? %></li>
-<br>
+
+
+      <div class="row">                                                                        <%# task div | - ROW 1 %>
+
+            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
+              <li><%=  sub_task.completed? %></li>
+            </div>                                                                               <%# /progress wheel  %>
+
+
+            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
+              <li><%=  sub_task.name %></li>
+            </div>                                                                               <%# /progress wheel  %>
+
+
+      </div>                                                                                          <%# / task div  %>
+
+<div class="border-bottom"></div>
+
 <% end %>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+</div>                                                                                            <%# /MAIN CONTAINER %>
