@@ -7,8 +7,9 @@
 }
 
 .contio-cards {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 5px 5px;
 }
 
 .contio-card {
@@ -29,6 +30,12 @@
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 #tag-new {

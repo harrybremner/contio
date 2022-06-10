@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.contractor = current_user
-    @project.client_id = 57
+    @project.client_id = 69
     if @project.save!
       redirect_to projects_path(@projects)
     else

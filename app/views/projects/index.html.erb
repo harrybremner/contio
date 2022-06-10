@@ -2,67 +2,69 @@
 So in this page we are showing the overview of all the projects (project index page or dashboard)
 If they are a client, they cannot add edit the project or create another one. Only contractors can.
 We must do <% if Project.contractor? %>
-
-<h1>Work Dashboard</h1>
-<h3>Summary</h3>
-  <div class="contio-card flex-around">
-    <div class="date-card">
-        <div style="margin:0" id="title">Today:</div>
-        <div style="margin:0" id="date-day"><%= @time.strftime("%d")%></div>
-        <div style="margin:0" id="month"><%= @time.strftime("%B")%></div>
-    </div>
-
-
-    <div class="summary-card">
-      <div><i class="fa-solid icon fa-list-check"></i> <strong id="summary-number"><%= @in_progress_projects %></strong>  on going projects</div>
-      <div><i class="fa-solid icon fa-diagram-project" style="font-size: 17.777px"></i> <strong id="summary-number"> <%= @in_progress_tasks %></strong> on going tasks</div>
-      <div><i class="fa-solid icon fa-circle-check"></i> <strong id="summary-number"><%= @completed_tasks %></strong> completed tasks</div>
-    </div>
-  </div>
-<div id="project-header" >
-  <h6>Projects:</h6>
-</div>
-
-
-<div class="contio-cards">
-  <% @projects.each do |project| %>
-    <%= link_to project_path(project), style:"text-decoration:none" do %>
-    <div class="contio-card">
-          <div class="flex-between" id="card-top" style="font-size: 24px">
-              <div id="tag-new">new</div>
-              <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
-          </div>
-      <div id="dashboard-card">
-
-          <div id="project-name"><%= project.name %></div>
-
-          <div style="font-size:12px; font-weight:300; color:gray">
-            <% if @user.is_contractor %>
-            For <%= project.client.first_name + " " + project.client.last_name%>
-            <% else %>
-            By <%= project.contractor.first_name + " " + project.contractor.last_name%>
-            <% end %>
-          </div>
-
-          <div class="flex-between" id="middle-section">
-            <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
-            <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
-          </div>
-
-          <div id="location">
-          <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
-          </div>
+<div class="main-container-all">
+  <h1>Work Dashboard</h1>
+  <h3>Summary</h3>
+    <div class="contio-card flex-around">
+      <div class="date-card">
+          <div style="margin:0" id="title">Today:</div>
+          <div style="margin:0" id="date-day"><%= @time.strftime("%d")%></div>
+          <div style="margin:0" id="month"><%= @time.strftime("%B")%></div>
       </div>
-    <% end %>
 
 
+      <div class="summary-card">
+        <div><i class="fa-solid icon fa-list-check"></i> <strong id="summary-number"><%= @in_progress_projects %></strong>  on going projects</div>
+        <div><i class="fa-solid icon fa-diagram-project" style="font-size: 17.777px"></i> <strong id="summary-number"> <%= @in_progress_tasks %></strong> on going tasks</div>
+        <div><i class="fa-solid icon fa-circle-check"></i> <strong id="summary-number"><%= @completed_tasks %></strong> completed tasks</div>
+      </div>
     </div>
+  <div id="project-header" >
+    <h6>Projects:</h6>
+  </div>
 
+
+  <div class="contio-cards">
+    <% @projects.each do |project| %>
+
+      <div class="contio-card">
+          <%= link_to project_path(project), style:"text-decoration:none" do %>
+              <div class="flex-between" id="card-top" style="font-size: 24px">
+                  <div id="tag-new">new</div>
+                  <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
+              </div>
+          <div id="dashboard-card">
+
+              <div id="project-name"><%= project.name %></div>
+
+              <div style="font-size:12px; font-weight:300; color:gray">
+                <% if @user.is_contractor %>
+                For <%= project.client.first_name + " " + project.client.last_name%>
+                <% else %>
+                By <%= project.contractor.first_name + " " + project.contractor.last_name%>
+                <% end %>
+              </div>
+
+              <div class="flex-between" id="middle-section">
+                <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
+                <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
+              </div>
+
+              <div id="location">
+              <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
+              </div>
+          <% end %>
+        </div>
+
+
+      </div>
+
+    <% end %>
+  </div>
+
+
+  <% if @user.is_contractor? %>
+    <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
+    <%= render "form", project: @project %>
   <% end %>
 </div>
-
-
-<% if @user.is_contractor? %>
-  <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
-  <%= render "form", project: @project %>
-<% end %>
