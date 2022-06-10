@@ -1,13 +1,15 @@
-
+.app-footer {
+  position: relative;
+}
 
 .mobile-footer {
+  position: fixed;
   flex-shrink: 0;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: $dark-blue;
   color: rgba(0, 0, 0, 0.3);
   padding: 25px;
-  position: sticky;
   bottom: 0;
 }
 .mobile-footer-links {
@@ -27,4 +29,19 @@
 }
 .plus {
   color: $orange;
+  position: absolute;
+  bottom: 25px;
+  border: 6px solid white;
+}
+
+.plus-sign {
+  border-radius: 50%;
+  position: relative;
+  bottom: 25px;
+  border: 4px solid white;
+  background-color: $orange;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  color: white;
 }

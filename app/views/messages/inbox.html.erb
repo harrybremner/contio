@@ -5,21 +5,23 @@ This view is controlled by the messages_index action in the projects_controller 
 
   <div class="d-flex justify-content-between mt-2">
     <% @projects.each do |project| %>
-
-      <% if project.contractor.photo.key && project.client.photo.key %>
-
-          <% if project.contractor == current_user %>
-            <%= cl_image_tag project.client.photo.key, class: "inbox-profile-picture" %>
-          <% else %>
-            <%= cl_image_tag project.contractor.photo.key, class: "inbox-profile-picture" %>
-          <% end %>
-      <% end %>
-        <% if project.messages.last.user = current_user %>
-          You:<%=project.messages.last.content%>
-        <% else %>
-          <%=project.messages.last.content%>
+      <% if project.messages.last %>
+        <% if project.contractor.photo.key && project.client.photo.key %>
+            <% if project.contractor == current_user %>
+              <%= cl_image_tag project.client.photo.key, class: "inbox-profile-picture" %>
+            <% else %>
+              <%= cl_image_tag project.contractor.photo.key, class: "inbox-profile-picture" %>
+            <% end %>
         <% end %>
-        <%= project.messages.last.created_at%>
-        <%= link_to "See message", project_messages_path(project)%>
+          <% if project.messages.last.user = current_user %>
+            You:<%=project.messages.last.content%>
+          <% else %>
+            <%=project.messages.last.content%>
+          <% end %>
+          <%= project.messages.last.created_at%>
+          <%= link_to "See message", project_messages_path(project)%>
+      <% else %>
+        <p>You have no messages</p>
+      <% end %>
     <% end %>
   </div>
