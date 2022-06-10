@@ -12,10 +12,9 @@ class SubTasksController < ApplicationController
   def create
     @task = Task.find(params[:task_id])
     @sub_task = SubTask.new(sub_task_params)
-    @sub_task.user = current_user
     @sub_task.task = @task
     if @sub_task.save
-      redirect_to task_sub_task_path(id: @sub_task.id, task_id: @task.id)
+      redirect_to task_path(@task)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +29,7 @@ class SubTasksController < ApplicationController
   private
 
   def sub_task_params
-    params.require(:sub_task).permit(:completed, :name, :description)
+    params.require(:sub_task).permit(:name, :description)
   end
 
   def authorization_error
