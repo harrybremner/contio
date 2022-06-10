@@ -1,0 +1,31 @@
+.inbox-background {
+  background-color: $dark-blue;
+  padding-top: 30px;
+
+}
+
+#inbox-card {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: $off-white;
+  padding: 10px;
+  padding-top: 16px;
+
+  h2 {
+    text-align: center;
+    color: $gray;
+  }
+
+  h3 {
+    color: $gray;
+    font-weight: 300;
+    font-size: 14px;
+    padding-top: 7px;
+
+  }
+
+  .center {
+    text-align: center;
+  }
+
+}
