@@ -8,7 +8,6 @@
 
 .contio-cards {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -17,23 +16,43 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   background-color: $white;
   position: relative;
+  text-decoration: none;
 }
 
-.flex-div {
+.flex-around {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
-  
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+#tag-new {
+  font-size:12px;
+  background-color: $dark-blue;
+  color: $white;
+  padding: 1px 8px 2px 8px;
+  border-radius: 10px;
 }
 
 
+#card-top {
+  border-bottom: 0.4px solid #d9d9d9;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
 
-.index-card {
 
 }
 
-.dashboard-card {
-  width: 159px;
+#dashboard-card {
+  width: 165px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .summary-card {
@@ -86,4 +105,47 @@
   flex-direction: column;
   justify-content: center;
   text-align: justify;
+}
+
+#project-name {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 5px;
+  color: gray;
+}
+
+#middle-section {
+  padding-top: 6px;
+  align-items: center;
+
+  #progress-bar {
+    font-size: 45px;
+    color: $orange;
+  }
+
+  #days {
+    font-size: 12px;
+    font-weight: 300;
+    color: #8f8f8f;
+    padding-right: 5px;
+  }
+
+  #days-left {
+    font-size: 16px;
+    color: #8f8f8f;
+    font-weight: 300;
+  }
+
+}
+
+#location {
+  font-size: 12px;
+  color: #8f8f8f;
+  font-weight: 300;
+  padding-bottom: 10px;
+
+}
+
+#project-header {
+  padding-top: 10px;
 }
