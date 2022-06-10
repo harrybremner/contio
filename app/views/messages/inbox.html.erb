@@ -11,31 +11,34 @@ This view is controlled by the messages_index action in the projects_controller 
       <h2>Inbox</h2>
       <% @projects.each do |project| %>
       <br>
-          <div class="contio-card pp flex-start">
+        <%= link_to project_messages_path(project), style:"text-decoration:none" do %>
+          <div class="card-product">
             <% if project.messages.last %>
                 <% if project.contractor.photo.key && project.client.photo.key %>
                   <div>
                     <% if project.contractor == current_user %>
-                      <%= cl_image_tag project.client.photo.key, class: "inbox-profile-picture" %>
+                      <%= cl_image_tag project.client.photo.key, class: "inbox-img" %>
                     <% else %>
-                      <%= cl_image_tag project.contractor.photo.key, class: "inbox-profile-picture" %>
+                      <%= cl_image_tag project.contractor.photo.key, class: "inbox-img" %>
                     <% end %>
                   </div>
                 <% end %>
-
-                  <% if project.messages.last.user = current_user %>
-                    <p style="margin:0px">You:<%=project.messages.last.content%></p>
-                  <% else %>
-                    <p style="margin:0px"><%=project.messages.last.content%></p>
-                  <% end %>
-                  <div>
-                  <%= project.messages.last.created_at%>
-                  </div>
-                  <div>
-                  <%= link_to "See message", project_messages_path(project), class: "button-3"%>
+                  <div class="card-product-infos">
+                    <h5>Project: <%= project.name  %></h5>
+                    <% if project.messages.last.user = current_user %>
+                      <p style="margin:0px">You: <%=project.messages.last.content%></p>
+                    <% else %>
+                      <p style="margin:0px"><%=project.messages.last.content%></p>
+                    <% end %>
+                    <% if project.messages.last.created_at.strftime('%d/%m/%Y') == Date.today.strftime('%d/%m/%Y') %>
+                      <p>Sent at: <%= project.messages.last.created_at.strftime('%H:%m')%></p>
+                    <% else %>
+                      <p><%=  project.messages.last.created_at.strftime('%d.%m.%y') %></p>
+                    <% end %>
                   </div>
             <% end %>
           </div>
+        <% end %>
       <% end %>
     </div>
   </div>

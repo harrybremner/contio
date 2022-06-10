@@ -18,7 +18,9 @@ We must do <% if Project.contractor? %>
                   <div class="col">                                                  <%# CLIENT COLUMN >    | - COL 1 %>
 
                       <div class="d-flex justify-content-center">
-                          <h1> 73% </h1>
+
+                   <h1> 73% </h1>
+
                       </div>
 
                   </div>
@@ -41,28 +43,54 @@ We must do <% if Project.contractor? %>
 
 <div class="border-bottom"></div>
 
+
 <% @task.sub_tasks.each do |sub_task|%>
 
+  <div class="contio-card">
 
-      <div class="row">                                                                        <%# task div | - ROW 1 %>
+      <div class="row align-items-center">                                                                        <%# task div | - ROW 1 %>
 
-            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-              <li><%=  sub_task.completed? %></li>
+            <div class="col text-center col-4">                                                          <%# progress wheel   | - COL 1 %>
+
+            <% if sub_task.completed? %>
+              <h2><i class="fa-regular fa-circle-check"></i></h2>
+            <%else%>
+              <h2><i class="fa-regular fa-circle-xmark"></i></h2>
+            <% end %>
+
             </div>                                                                               <%# /progress wheel  %>
 
 
-            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-              <li><%=  sub_task.name %></li>
+            <div class="col col-8">                                                          <%# progress wheel   | - COL 1 %>
+
+
+              <div class="row">
+
+                <%=  sub_task.name %>
+
+              </div>
+
+
+              <div class="row">
+
+                <%=  sub_task.description %>
+
+              </div>
+
+
             </div>                                                                               <%# /progress wheel  %>
+
+
 
 
       </div>                                                                                          <%# / task div  %>
-
+  </div>
+<br>
 <div class="border-bottom"></div>
 
 <% end %>
 
-
+<%= render "sub_tasks/sub_task_form", sub_task: @sub_task %>
 
 
 

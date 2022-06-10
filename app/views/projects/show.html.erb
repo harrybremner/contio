@@ -60,6 +60,11 @@ We must do <% if Project.contractor? %>
               </div>
           </div>
         <% end %>
+
       </div>
     <% end %>
+
+
+<h1> New Task: </h1>
+ <%= render "tasks/task_form", task: @task %>
 </div>                                                                                            <%# /MAIN CONTAINER %>

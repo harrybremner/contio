@@ -1,0 +1,5 @@
+<%= simple_form_for [@project, @task, @sub_task] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit class: "btn-form" %>
+<% end %>
