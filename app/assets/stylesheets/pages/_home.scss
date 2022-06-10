@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .cover {
-  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(asset_path('home_2.jpg'));
-  height: 100vh;
+  background-color: $orange;
+  height: 600px;
   width: 100%;
   text-align: left;
   background-size: cover;
@@ -13,8 +13,21 @@
     max-width: 1000px;
     padding-right: 550px;
   }
+  h1 {
+    font-size: 42px;
+  }
+  h2 {
+    font-size: 28px;
+  }
 }
 
 .typed-js {
   min-height: 33.6px;
+}
+
+.home-flex-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 20px;
 }
