@@ -17,15 +17,21 @@ We must do <% if Project.contractor? %>
         <div class="row">                                                         <%# General info row      | - ROW 1 %>
 
             <div class="col">                                                        <%# CLIENT COLUMN >    | - COL 1 %>
-              <h3> Client name: </h3>
-              <p> Michael Morbius </p>
+
+              <% if @user.is_contractor %>
+                <h3> Client name: </h3>
+                <p> <%= @project.client.first_name + " " + @project.client.last_name%> </p>
+                <% else %>
+                <h3> Contractor: </h3>
+                <p><%= @project.contractor.first_name + " " + @project.contractor.last_name%> </p>
+                <% end %>
 
             </div>
 
             <div class="col">                                                          <%# DATE COLUMN >    | - COL 2 %>
 
               <h3> Due Date: </h3>
-              <p> 20/04/1969 </p>
+              <p> <%= @project.end_date %></p>
 
             </div>
 
@@ -36,9 +42,8 @@ We must do <% if Project.contractor? %>
 
         <div class="row"><h4> Description: </h4>  </div>                          <%# DESCRIPTION HEADING   | - ROW 1 %>
 
-        <div class="row"><p> This is where the description will go                     <%# DESCRIPTION      | - ROW 2 %>
-                              just some filler text for now       </p>
-        </div>                                                                                       <%# /DESCRIPTION %>
+        <div class="row"><p> <%= @project.description %>     </p> </div>                             <%# /DESCRIPTION %>
+
 
 
 
@@ -78,7 +83,7 @@ We must do <% if Project.contractor? %>
 
               <div class="row">                                                           <%# no of subtasks | -ROW 2 %>
 
-                7 subtasks
+                <%= task.sub_tasks.count %> Subtasks
 
               </div>                                                                              <%# /no of subtasks %>
 
@@ -91,7 +96,7 @@ We must do <% if Project.contractor? %>
 
               <div class="row">                                                                 <%# task colour |ROW 1%>
 
-                 BLUE
+                <%=  task.priority %>
 
               </div>                                                                                 <%# /task colour %>
 
