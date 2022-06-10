@@ -46,15 +46,15 @@ We must do <% if Project.contractor? %>
         <div class="contio-card" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
             <div class="flex-between">
-              <div class="flex-between">
+              <div class="flex-between" id="progress-section">
                 <div id="progress-bar"><i class="fa-solid fa-circle-notch"></i></div>
-                <p>73%</p>                                                                           <%# /progress wheel  %>
+                <p id="progress">73%</p>                                                                           <%# /progress wheel  %>
               </div>
-              <div>
+              <div id="task-name">
                   <div id="project.name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
-                  <%= task.sub_tasks.count %> Subtasks
+                  <p><%= task.sub_tasks.count %> Subtasks</p>
               </div>
-              <div>
+              <div id="priority">
                   <%=  task.priority %>
                   Due date: <%=  task.end_date %>
               </div>
