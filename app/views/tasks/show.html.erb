@@ -4,14 +4,10 @@ with probably a bit of info on the task)
 If they are a client, they cannot add edit the task or subtasks or add new ones.
 We must do <% if Project.contractor? %>
 
-<div class="container">
 
-      <div class="text-center">
-                  <h1><%= @task.name %></h1>
-
-      </div>
-
-<div class="border-bottom"></div>
+<div class="main-container-all " id="task-page" data-controller="task-progress">
+  <h1 class="subtask-h1"><%= @task.name %></h1>
+  <div class="subtask-intros">
 
       <div class="row">
 
@@ -21,81 +17,99 @@ We must do <% if Project.contractor? %>
                         <div style="position:relative">
                             <svg>
                               <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle class="meter-1" cx="57" cy="57" r="52" />
+                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 360 - (360.0 * @percentage / 100.0) %>;"class="meter-1" cx="57" cy="57" r="52" />
                             </svg>
-                            <h2 style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
+                            <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
                         </div>
                       </div>
 
                   </div>
+      </div>
+        <div class="subtask-intro">
+            <div>
+              <p> Start Date: </p>
+              <p> <strong><%= @task.start_date.strftime("%d %b") %> </strong></p>
+            </div>
+        </div>
+        <div class="subtask-intro">
+            <div>
+              <p> End Date: </p>
+              <p> <strong><%= @task.end_date.strftime("%d %b") %> </strong></p>
+            </div>
+        </div>
+  </div>
 
-                  <div class="col">
 
-                    <h3> Start Date: </h3>
-                    <%=  @task.start_date %>
+  
+  <div class="border-bottom"></div>
 
-                    <h3> Due Date: </h3>
-                    <%=  @task.end_date %>
-
-                  </div>
-
+    <div id="tasks-title">
+        <div><strong><%= @task.sub_tasks.count %> subtasks: </strong>
+    </div>
+        <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-plus"></i> Add subtask
+        </button>
       </div>
 
-<div class="border-bottom"></div>
-
-<strong><%= @task.sub_tasks.count %> subtasks: </strong>
-<br>
-<br>
-<div class="border-bottom"></div>
-<% @task.sub_tasks.each do |sub_task|%>
+    <div class="border-bottom"></div>
+    <% @task.sub_tasks.each do |sub_task|%>
 
 
-        <div class="contio-card">
+      <div class="contio-card">
 
         <div class="row">
-              <div class="col-2" data-controller="sub-tasks" data-task-id="<%= @task.id %>" data-project-id="<%= @task.project.id %>">                                                                        <%# task div | - ROW 1 %>
-
-
+              <div class="col-2" data-controller="sub-tasks" data-task-id="<%= @task.id %>" data-project-id="<%= @task.project.id %>">
                 <%= form_with(model: sub_task) do |form| %>
                   <%= form.check_box :completed,
                         data: {
                          id: sub_task.id,
-                         action: "change->sub-tasks#toggle"
-                       }, id:"subtaskcheckbox"%>
+                         action: "change->sub-tasks#toggle sub-tasks:toggle->task-progress#recalculate",
+                         task_progress_target: "complete"
+                       }, id:"subtaskcheckbox" %>
+
                 <% end %>
-
-
               </div>
-
 
               <div class="col">
-
                   <div class="row">
-                   <p><strong> <%=  sub_task.name %> </strong></p>
+                    <p><strong> <%=  sub_task.name %> </strong></p>
                   </div>
-
                   <div class="row">
-                   <p><%=  sub_task.description %></p>
+                    <p><%=  sub_task.description %></p>
                   </div>
 
               </div>
         </div>
+      </div>
+    <br>
+    <% end %>
+    <div class="border-bottom"></div>
 
+    </div>
+    </div>
+
+
+        <!-- Button trigger modal -->
+
+  <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-<br>
-<% end %>
-<div class="border-bottom"></div>
-
-</div>
-</div>
-<%= render "sub_tasks/sub_task_form", sub_task: @sub_task %>
-
-
-
-
-
-
-
-
-
-</div>
+        <div class="modal-body">
+          <%= render "sub_tasks/sub_task_form", task: @task %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

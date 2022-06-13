@@ -25,3 +25,7 @@ application.register("sub-tasks", SubTasksController)
 window.Stimulus = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 Stimulus.load(definitionsFromContext(context))
+
+import TaskProgressController from "./task_progress_controller.js"
+application.register("task-progress", TaskProgressController)
+

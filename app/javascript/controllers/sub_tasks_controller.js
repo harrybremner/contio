@@ -27,7 +27,7 @@ export default class extends Controller {
         .then(response => response.json())
         .then(data => {
           console.log(data)
-           alert(data.message)
+           this.dispatch("toggle", {target: e.target})
          })
   }
 }

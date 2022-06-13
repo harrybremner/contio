@@ -7,7 +7,7 @@ We must do <% if Project.contractor? %>
 
 
 <div class="main-container-all" id="task-page">
-  <h1><%= @project.name %></h1>
+  <h1 class="subtask-h1"><%= @project.name %></h1>
   <div class="task-intros">
       <div class="task-intro">
         <% if @user.is_contractor %>
@@ -40,11 +40,16 @@ We must do <% if Project.contractor? %>
   </div>
 
   <div class="description-project">
-    <p><strong>Description: </strong> </p>                   <%# DESCRIPTION HEADING   | - ROW 1 %>
+    <p><strong>Description: </strong> </p>
     <p> <%= @project.description %></p>
   </div>
 
-                      <%# /DESCRIPTION %>
+<h5>Progress bar</h5>
+<div class="progress mb-3">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">50%</div>
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+</div>
 
 
 
