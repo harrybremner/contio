@@ -4,7 +4,7 @@ with probably a bit of info on the task)
 If they are a client, they cannot add edit the task or subtasks or add new ones.
 We must do <% if Project.contractor? %>
 
-<div class="container">
+<div class="container" data-controller="task-progress">
 
       <div class="text-center">
                   <h1><%= @task.name %></h1>
@@ -21,9 +21,9 @@ We must do <% if Project.contractor? %>
                         <div style="position:relative">
                             <svg>
                               <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle class="meter-1" cx="57" cy="57" r="52" />
+                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 360 - (360.0 * @percentage / 100.0) %>;"class="meter-1" cx="57" cy="57" r="52" />
                             </svg>
-                            <h2 style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
+                            <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
                         </div>
                       </div>
 
@@ -60,8 +60,9 @@ We must do <% if Project.contractor? %>
                   <%= form.check_box :completed,
                         data: {
                          id: sub_task.id,
-                         action: "change->sub-tasks#toggle"
-                       }, id:"subtaskcheckbox"%>
+                         action: "change->sub-tasks#toggle sub-tasks:toggle->task-progress#recalculate",
+                         task_progress_target: "complete"
+                       }, id:"subtaskcheckbox" %>
                 <% end %>
 
 
