@@ -64,7 +64,7 @@ We must do <% if Project.contractor? %>
                     <circle class="bg" cx="57" cy="57" r="26" />
                     <circle class="meter-1" cx="57" cy="57" r="26" />
                   </svg>
-              </div>  
+              </div>
               <div id="task-name">
                   <div id="tasks-name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
                   <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
@@ -81,8 +81,10 @@ We must do <% if Project.contractor? %>
                 </div>
                 <div>Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></div>
               </div>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
 
 

@@ -23,7 +23,7 @@ We must do <% if Project.contractor? %>
                               <circle class="bg" cx="57" cy="57" r="52" />
                               <circle class="meter-1" cx="57" cy="57" r="52" />
                             </svg>
-                            <h2 style="position:absolute; top:37%; left:20%"> 73% </h2>
+                            <h2 style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
                         </div>
                       </div>
 
