@@ -5,17 +5,16 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     @sub_task = SubTask.new
-    @sub_tasks = SubTask.all
+    @sub_tasks = SubTask.where(task: @task)
     if @project.client == current_user || @project.contractor == current_user
       @user = current_user
-      @task = Task.find(params[:id])
-      @sub_tasks = SubTask.all
     else
       authorization_error
     end
-    @completed_tasks = @sub_tasks.select {|task| task.completed }
-    @uncompleted_tasks = @sub_tasks - @completed_tasks
-    @percentage = @completed_tasks.count / @uncompleted_tasks.count
+    @completed_tasks = @sub_tasks.select {|subtask| subtask.completed }
+    @completed_tasks = @completed_tasks.length
+    @uncompleted_tasks = @sub_tasks.length - @completed_tasks
+    @percentage = (@completed_tasks.to_f / @sub_tasks.length.to_f ) * 100
   end
 
   def create
