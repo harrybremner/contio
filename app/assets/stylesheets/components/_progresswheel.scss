@@ -1,7 +1,3 @@
-
-
-
-
 svg {
   width: 114px;
   height: 114px;
@@ -36,6 +32,6 @@ svg {
         stroke-dashoffset: 360;
     }
     to {
-        stroke-dashoffset: 180;
+        stroke-dashoffset: 0;
     }
 }

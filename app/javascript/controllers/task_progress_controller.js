@@ -21,7 +21,7 @@ export default class extends Controller {
     console.log(totalCompleted)
     console.log(this.completeTargets.length)
     console.log(totalCompleted / this.completeTargets.length)
-    this.svgTarget.style.strokeDashoffset = 360 - (360 * percentageComplete)
+    this.svgTarget.style.strokeDashoffset = 380 - (360 * percentageComplete )
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
 }

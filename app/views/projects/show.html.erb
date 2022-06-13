@@ -58,20 +58,25 @@ We must do <% if Project.contractor? %>
         <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-solid fa-plus"></i> Add task
         </button>
-      </div>                                                  <%#Tasks header    | - ROW 1 %>
+      </div>
 
       <% @project.tasks.each do |task| %>
         <div class="contio-card" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
             <div class="flex-between">
-              <div class="progresswheel">
-                  <svg>
-                    <circle class="bg" cx="57" cy="57" r="26" />
-                    <circle class="meter-1" cx="57" cy="57" r="26" />
-                  </svg>
-              </div>
+
+
+                      <div class="progresswheel">
+                            <svg>
+                              <circle class="bg" cx="57" cy="57" r="52" />
+                              <circle  class="meter-1" cx="57" cy="57" r="52" />
+                            </svg>
+                        </div>
+                      </div>
+
+                  </div>
               <div id="task-name">
-                  <div id="tasks-name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
+                  <div id="tasks-name"><%= task.name%></div>
                   <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
               </div>
               <div id="priority">
