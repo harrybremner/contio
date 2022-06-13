@@ -44,12 +44,18 @@ We must do <% if Project.contractor? %>
     <p> <%= @project.description %></p>
   </div>
 
-<h5>Progress bar</h5>
-<div class="progress mb-3">
-  <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">50%</div>
-  <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
-</div>
+  <%# Progress bar %>
+    <div>
+      <h5>Progress bar</h5>
+        <p>You have <strong><%= @project.tasks.where(completed: false).count %> tasks</strong> remaining.</p>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-success" role="progressbar" style="width:<%= @completed_tasks %>%" aria-valuenow="<%= @completed_tasks %> " aria-valuemin="0" aria-valuemax="100">%</div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width:<%= @in_progress_tasks %>%" aria-valuenow="<%= @in_progress_tasks %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <%# <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div> %>
+      </div>
+        <div class="progress-bar bg-success" role="progressbar" style="width:20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"></div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width:20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"></div>
+    </div>
 
 
 
@@ -60,31 +66,40 @@ We must do <% if Project.contractor? %>
         </button>
       </div>                                                  <%#Tasks header    | - ROW 1 %>
 
+
+<%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
       <% @project.tasks.each do |task| %>
         <div class="contio-card" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
-            <div class="flex-between">
-              <div class="progresswheel">
-                  <svg>
-                    <circle class="bg" cx="57" cy="57" r="26" />
-                    <circle class="meter-1" cx="57" cy="57" r="26" />
-                  </svg>
-              </div>
-              <div id="task-name">
-                  <div id="tasks-name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
-                  <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
-              </div>
-              <div id="priority">
-                <div class="priority-sign">
-                  <% if task.priority == "low"  %>
-                    <div id="low-sign">low</div>
-                  <% elsif task.priority == "medium" %>
-                    <div id="medium-sign">medium</div>
-                  <% else task.priority == "high" %>
-                    <div id="high-sign">high</div>
-                  <% end %>
+            <div>
+
+              <div class="flex-between">
+                <div id="task-name">
+                    <div id="tasks-name"><%= task.name%></div>
                 </div>
-                <div>Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></div>
+                <div id="priority">
+                  <div class="priority-sign">
+                    <% if task.priority == "low"  %>
+                      <div id="low-sign">low</div>
+                    <% elsif task.priority == "medium" %>
+                      <div id="medium-sign">medium</div>
+                    <% else task.priority == "high" %>
+                      <div id="high-sign">high</div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-between">
+                <p class="due-date"><%= task.sub_tasks.count %> Subtasks</p>
+                <li class="media mb-3 progress-bar-margin">
+                  <div class="media-body align-self-center">
+                    <div class="small text-muted mb-1"><%= task.sub_tasks.count.to_f > 0.0 ? ((task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100) : 0 %>% complete</div>
+                      <div class="progress mb-1" style="height: 3px;">
+                        <div class="progress-bar" role="progressbar" style="width: <%= (task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100 %>%;" aria-valuenow="<%= (task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+                </li>
+                <p class="due-date">Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></p>
               </div>
             </div>
           <% end %>
