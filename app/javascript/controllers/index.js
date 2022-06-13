@@ -13,6 +13,9 @@ application.register("mobile-navbar", MobileNavbarController)
 import ProjectSubscriptionController from "./project_subscription_controller.js"
 application.register("project-subscription", ProjectSubscriptionController)
 
+import Select2Controller from "./select2_controller.js"
+application.register("select2", Select2Controller)
+
 
 // const btn = document.querySelector('.fa-house');
 
