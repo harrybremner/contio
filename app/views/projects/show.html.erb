@@ -81,8 +81,10 @@ We must do <% if Project.contractor? %>
                 </div>
                 <div>Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></div>
               </div>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
 
 
@@ -111,5 +113,3 @@ We must do <% if Project.contractor? %>
     </div>
   </div>
 </div>                                                                                            <%# /MAIN CONTAINER %>
-
-  <% end %>
