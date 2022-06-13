@@ -64,7 +64,7 @@ We must do <% if Project.contractor? %>
         <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-solid fa-plus"></i> Add task
         </button>
-      </div>                                                  <%#Tasks header    | - ROW 1 %>
+      </div>
 
 
 <%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
@@ -76,6 +76,7 @@ We must do <% if Project.contractor? %>
               <div class="flex-between">
                 <div id="task-name">
                     <div id="tasks-name"><%= task.name%></div>
+                  
                 </div>
                 <div id="priority">
                   <div class="priority-sign">
