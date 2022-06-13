@@ -6,41 +6,54 @@ We must do <% if Project.contractor? %>
 
 
 
-<div class="main-container-all">                                                                        <%# MAIN CONTAINER %>
+<div class="main-container-all" id="task-page">
   <h1><%= @project.name %></h1>
-                                                                   <%# underline %>
+  <div class="task-intros">
+      <div class="task-intro">
+        <% if @user.is_contractor %>
+          <div>
+            <i class="fa-solid icon fa-list-check"></i>
+          </div>
+          <div>
+            <p> Client name: </p>
+            <p> <strong><%= @project.client.first_name + " " + @project.client.last_name%></strong> </p>
+          </div>
+        <% else %>
+          <div>
+            <i class="fa-solid icon fa-list-check"></i>
+          </div>
+          <div>
+            <p> Contractor: </p>
+            <p><strong><%= @project.contractor.first_name + " " + @project.contractor.last_name%></strong></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="task-intro">
+        <div>
+          <i class="fa-solid icon fa-list-check"></i>
+        </div>
+        <div>
+          <p> Due: </p>
+          <p> <strong><%= @project.end_date.strftime("%d %b") %> </strong></p>
+        </div>
+      </div>
+  </div>
 
-        <div class="row">                                                         <%# General info row      | - ROW 1 %>
+  <div class="description-project">
+    <p><strong>Description: </strong> </p>                   <%# DESCRIPTION HEADING   | - ROW 1 %>
+    <p> <%= @project.description %></p>
+  </div>
 
-            <div class="col">                                                        <%# CLIENT COLUMN >    | - COL 1 %>
-
-              <% if @user.is_contractor %>
-                <p> Client name: </p>
-                <p><i class="fa-solid icon fa-list-check"></i> <%= @project.client.first_name + " " + @project.client.last_name%> </p>
-                <% else %>
-                <p> Contractor: </p>
-                <p><i class="fa-solid icon fa-list-check"></i> <%= @project.contractor.first_name + " " + @project.contractor.last_name%> </p>
-                <% end %>
-
-            </div>
-
-            <div class="col">                                                          <%# DATE COLUMN >    | - COL 2 %>
-
-              <p> Due Date: </p>
-              <p><i class="fa-solid icon fa-list-check"></i>  <%= @project.end_date %></p>
-
-            </div>
-
-        </div>                                                                                     <%# /MAIN INFO ROW %>
-
-                                                                   <%# underline %>
-        <p><strong>Description: </strong> </p>                   <%# DESCRIPTION HEADING   | - ROW 1 %>
-
-        <p> <%= @project.description %></p>                           <%# /DESCRIPTION %>
+                      <%# /DESCRIPTION %>
 
 
 
-      <div> Tasks: </div>                                                  <%#Tasks header    | - ROW 1 %>
+      <div id="tasks-title">
+        <div> <strong>Tasks:</strong></div>
+        <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-plus"></i> Add task
+        </button>
+      </div>                                                  <%#Tasks header    | - ROW 1 %>
 
       <% @project.tasks.each do |task| %>
         <div class="contio-card" id="task">
@@ -51,12 +64,20 @@ We must do <% if Project.contractor? %>
                 <p id="progress">73%</p>                                                                           <%# /progress wheel  %>
               </div>
               <div id="task-name">
-                  <div id="project.name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
-                  <p><%= task.sub_tasks.count %> Subtasks</p>
+                  <div id="tasks-name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
+                  <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
               </div>
               <div id="priority">
-                  <%=  task.priority %>
-                  Due date: <%=  task.end_date %>
+                <div class="priority-sign">
+                  <% if task.priority == "low"  %>
+                    <div id="low-sign">low</div>
+                  <% elsif task.priority == "medium" %>
+                    <div id="medium-sign">medium</div>
+                  <% else task.priority == "high" %>
+                    <div id="high-sign">high</div>
+                  <% end %>
+                </div>
+                <div>Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></div>
               </div>
           </div>
         <% end %>
@@ -64,7 +85,28 @@ We must do <% if Project.contractor? %>
       </div>
     <% end %>
 
+    <!-- Button trigger modal -->
 
-<h1> New Task: </h1>
- <%= render "tasks/task_form", task: @task %>
+  <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "tasks/task_form", task: @task %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>                                                                                            <%# /MAIN CONTAINER %>

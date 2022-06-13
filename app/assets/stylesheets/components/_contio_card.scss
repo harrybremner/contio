@@ -4,7 +4,6 @@
   background-color: $off-white;
   padding-top: 10px;
   margin-bottom: 80px;
-
 }
 
 .contio-cards {
@@ -16,6 +15,7 @@
 
 .contio-card a {
   color: $gray;
+
 }
 
 .contio-card {
@@ -161,11 +161,21 @@
 
 #project-header {
   padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 #task-card {
   margin-bottom: 10px;
   color: $gray
 
+}
 
+#align-content-to-bottom {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  // align-items: flex-end;
 }
