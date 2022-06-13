@@ -13,6 +13,11 @@
   gap: 5px 5px;
 }
 
+
+.contio-card a {
+  color: $gray;
+}
+
 .contio-card {
   border-radius: 15px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -156,4 +161,11 @@
 
 #project-header {
   padding-top: 10px;
+}
+
+#task-card {
+  margin-bottom: 10px;
+  color: $gray
+
+
 }

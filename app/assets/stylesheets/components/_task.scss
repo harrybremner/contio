@@ -1,0 +1,36 @@
+#task {
+  margin-bottom: 10px;
+  position: relative;
+
+  i {
+    font-size: 45px;
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-right: 5px;
+    color: $orange;
+  }
+
+  #progress {
+    position: absolute;
+    top: 26px;
+    left: 14px;
+    font-size: 14px;
+  }
+
+  #task-name {
+    padding-left: 10px;
+    font-size: 14px;
+    width: 100px;
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+  #priority {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+
+}

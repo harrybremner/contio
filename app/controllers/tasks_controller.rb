@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     @sub_task = SubTask.new
+    @sub_tasks = SubTask.all
     if @project.client == current_user || @project.contractor == current_user
       @user = current_user
       @task = Task.find(params[:id])
@@ -12,6 +13,9 @@ class TasksController < ApplicationController
     else
       authorization_error
     end
+    @completed_tasks = @sub_tasks.select {|task| task.completed }
+    @uncompleted_tasks = @sub_tasks - @completed_tasks
+    @percentage = @completed_tasks.count / @uncompleted_tasks.count
   end
 
   def create
@@ -21,7 +25,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to project_path(@project)
     else
-      render :edit, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +34,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
-      render :edit, status: :unprocessable_entity
+      render :update, status: :unprocessable_entity
     end
   end
 

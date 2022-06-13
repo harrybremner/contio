@@ -9,7 +9,13 @@ class Project < ApplicationRecord
   validates_presence_of :start_date, :end_date
   validate :end_date_is_after_start_date
   validate :start_date_is_before_today
+  #trying to add stuff for simple_calendar to work
+  alias_attribute :start_time, :start_date
+  alias_attribute :end_time, :end_date
 
+  def multi_days?
+    (end_time.to_date - start_time.to_date).to_i >= 1
+  end
 
   private
 
@@ -26,5 +32,6 @@ class Project < ApplicationRecord
       errors.add(:start_date, "date cannot be before today")
     end
   end
+
 
 end

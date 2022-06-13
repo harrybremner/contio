@@ -67,4 +67,7 @@ We must do <% if Project.contractor? %>
     <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
     <%= render "form", project: @project %>
   <% end %>
+
+  <%= render "form", project: @project %>
+
 </div>

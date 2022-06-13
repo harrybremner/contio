@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
       <li class="nav-item active navbar-nav me-auto">
           <%= link_to root_path, class: "nav-link" do%>
-          <i class="fa-solid fa-van-shuttle fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;" ></i> Contio
+           Contio
           <%end%>
       </li>
     </div>
@@ -16,18 +16,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active" style="padding-top:8px; padding-right:12px">
-            <%= link_to "Projects", projects_path, class: "btn-nav" %>
-          </li>
-          <li class="nav-item active" style="padding-top:8px; padding-right:12px">
-            <%= link_to "Messages", inbox_path, class: "btn-nav" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "View Profile", users_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+            <%= link_to "Enter app!", projects_path, class: "btn-nav" %>
           </li>
         <% else %>
           <li class="nav-item">

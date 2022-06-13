@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resource :users, only: [:show, :destroy]
   get "/inbox", to: "messages#inbox"
   post "/projects/:project_id/tasks/:task_id/sub_tasks/:id/toggle", to: "sub_tasks#toggle"
+  get "/calendar", to: "pages#calendar"
+
 end
 
 
