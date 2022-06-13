@@ -17,7 +17,7 @@ We must do <% if Project.contractor? %>
                         <div style="position:relative">
                             <svg>
                               <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= (380 - (360.0 * (@percentage / 100.0) )) %>;"class="meter-1" cx="57" cy="57" r="52" />
+                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= (380 - (360.0 * (@percentage / 100.0) )) %>; "class="meter-1" cx="57" cy="57" r="52" data-offset=<%= (380 - (360.0 * (@percentage / 100.0) ))%>
                             </svg>
                             <h2 data-task-progress-target="percentage" style="position:absolute; top:36%; left:25%;"> <%= @percentage.round %> % </h2>
                         </div>

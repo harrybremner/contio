@@ -4,9 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["complete", "svg", "percentage"]
   connect() {
-    console.log(this.completeTargets)
-    console.log(this.svgTarget)
-    console.log(this.percentageTarget)
+
+    console.log(this.svgTarget.dataset.offset)
   }
 
   recalculate(e) {
@@ -18,9 +17,9 @@ export default class extends Controller {
       }
     })
     const percentageComplete = totalCompleted / this.completeTargets.length;
-    console.log(totalCompleted)
-    console.log(this.completeTargets.length)
-    console.log(totalCompleted / this.completeTargets.length)
+    // console.log(totalCompleted)
+    // console.log(this.completeTargets.length)
+    // console.log(totalCompleted / this.completeTargets.length)
     this.svgTarget.style.strokeDashoffset = 380 - (360 * percentageComplete )
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
