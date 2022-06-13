@@ -6,25 +6,25 @@ We must do <% if Project.contractor? %>
 
 
 <div class="main-container-all " id="task-page" data-controller="task-progress">
-  <h1 class="subtask-h1"><%= @task.name %></h1>
+  <h1 class="subtask-h1"><%= @task.name %> </h1>
   <div class="subtask-intros">
 
+
+      <%# Progress wheel  %>
       <div class="row">
-
-                  <div class="col">
-
-                      <div class="progresswheel">
-                        <div style="position:relative">
-                            <svg>
-                              <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 360 - (360.0 * @percentage / 100.0) %>;"class="meter-1" cx="57" cy="57" r="52" />
-                            </svg>
-                            <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
-                        </div>
-                      </div>
-
-                  </div>
+        <div class="col">
+            <div class="progresswheel">
+              <div style="position:relative">
+                  <svg>
+                    <circle class="bg" cx="57" cy="57" r="52" />
+                    <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 360.0 * (@percentage / 100.0) %>;"class="meter-1" cx="57" cy="57" r="52" />
+                  </svg>
+                  <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
+              </div>
+            </div>
+        </div>
       </div>
+
         <div class="subtask-intro">
             <div>
               <p> Start Date: </p>
@@ -40,7 +40,7 @@ We must do <% if Project.contractor? %>
   </div>
 
 
-  
+
   <div class="border-bottom"></div>
 
     <div id="tasks-title">

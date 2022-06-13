@@ -1,7 +1,7 @@
 #task {
   margin-bottom: 10px;
   position: relative;
-  height: 65px;
+  height: 75px;
 
   i {
     font-size: 45px;
@@ -18,6 +18,26 @@
     font-size: 14px;
   }
 
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: $orange;
+  transition: width 0.6s ease;
+  color: $orange;
+
+}
+
+.progress {
+  height: 8px;
+  width: 106px;
+}
+
   #task-name {
     padding-left: 10px;
     font-size: 14px;
@@ -28,7 +48,12 @@
 
 
     #tasks-name {
-      font-weight: 500;
+        padding-left: 10px;
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
 
     #tasks-remaining {
@@ -146,4 +171,30 @@
 
 .subtask-h1 {
   text-align: center;
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 12px;
+
+}
+
+.progress-bar-margin {
+  margin: 10px;
+  list-style: none;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  align-items: center;
+}
+
+.due-date {
+    padding: 10px;
+    font-size: 14px;
 }

@@ -38,6 +38,8 @@ class ProjectsController < ApplicationController
       else
         authorization_error
       end
+      @in_progress_tasks = (@project.tasks.where(completed: false).count / @project.tasks.count) * 100
+      @completed_tasks = (@project.tasks.where(completed: true).count / @project.tasks.count) * 100
   end
 
   def create
