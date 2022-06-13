@@ -21,6 +21,14 @@ We must do <% if Project.contractor? %>
     </div>
   <div id="project-header" >
     <h6>Projects:</h6>
+    <div>
+      <% if @user.is_contractor? %>
+      <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <i class="fa-solid fa-plus"></i> Add Project
+      </button>
+      <% end %>
+    </div>
+
   </div>
 
 
@@ -36,22 +44,24 @@ We must do <% if Project.contractor? %>
           <div id="dashboard-card">
 
               <div id="project-name"><%= project.name %></div>
+              <div id="align-content-to-bottom">
+                <div style="font-size:12px; font-weight:300; color:gray">
+                  <% if @user.is_contractor %>
+                  For <%= project.client.first_name + " " + project.client.last_name%>
+                  <% else %>
+                  By <%= project.contractor.first_name + " " + project.contractor.last_name%>
+                  <% end %>
+                </div>
 
-              <div style="font-size:12px; font-weight:300; color:gray">
-                <% if @user.is_contractor %>
-                For <%= project.client.first_name + " " + project.client.last_name%>
-                <% else %>
-                By <%= project.contractor.first_name + " " + project.contractor.last_name%>
-                <% end %>
-              </div>
 
-              <div class="flex-between" id="middle-section">
-                <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
-                <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
-              </div>
+                <div class="flex-between" id="middle-section">
+                  <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
+                  <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
+                </div>
 
-              <div id="location">
-              <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
+                <div id="location">
+                  <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
+                </div>
               </div>
           <% end %>
         </div>
@@ -62,10 +72,27 @@ We must do <% if Project.contractor? %>
     <% end %>
   </div>
 
-
   <% if @user.is_contractor? %>
-    <%= link_to "Create new project", projects_path(@project), class: "btn btn-ghost"%>
-    <%= render "form", project: @project %>
-  <% end %>
+    <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus"></i> Add Project
+    </button>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= render "form", project: @project %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
