@@ -4,7 +4,7 @@
     <%= link_to "", calendar_path, class: "mobile-footer-links fa-solid fa-calendar-days #{'active' if params[:action] == 'calendar' }" %>
     <%# <i class="fa-solid fa-circle-plus plus fa-3x "></i> %>
     <div class = "fa-thin fa-plus fa-2x plus-sign"></div>
-    <%= link_to "", inbox_path, class: "mobile-footer-links fa-solid fa-inbox" %>
-    <%= link_to "", users_path, class: "mobile-footer-links fa-solid fa-user" %>
+    <%= link_to "", inbox_path, class: "mobile-footer-links fa-solid fa-inbox #{'active' if controller_name == 'messages' }" %>
+    <%= link_to "", users_path, class: "mobile-footer-links fa-solid fa-user #{'active' if controller_name == 'users' }" %>
   </div>
 </div>
