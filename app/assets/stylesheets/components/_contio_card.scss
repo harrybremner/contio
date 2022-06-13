@@ -44,9 +44,25 @@
   align-items: center;
 }
 
-#tag-new {
+#tag-low {
   font-size:12px;
   background-color: $dark-blue;
+  color: $white;
+  padding: 1px 8px 2px 8px;
+  border-radius: 10px;
+}
+
+#tag-medium {
+  font-size:12px;
+  background-color: $gray;
+  color: $white;
+  padding: 1px 8px 2px 8px;
+  border-radius: 10px;
+}
+
+#tag-high {
+  font-size:12px;
+  background-color: $orange;
   color: $white;
   padding: 1px 8px 2px 8px;
   border-radius: 10px;
@@ -174,8 +190,7 @@
 }
 
 #align-content-to-bottom {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: flex-end;
-  // align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
 }

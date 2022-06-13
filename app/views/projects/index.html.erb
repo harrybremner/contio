@@ -3,8 +3,8 @@ So in this page we are showing the overview of all the projects (project index p
 If they are a client, they cannot add edit the project or create another one. Only contractors can.
 We must do <% if Project.contractor? %>
 <div class="main-container-all">
-  <h1>Work Dashboard</h1>
-  <h3>Summary</h3>
+  <h3>Dashboard</h3>
+  <h6>Summary:</h6>
     <div class="contio-card flex-around">
       <div class="date-card">
           <div style="margin:0" id="title">Today:</div>
@@ -32,64 +32,63 @@ We must do <% if Project.contractor? %>
   </div>
 
 
-  <div class="contio-cards">
+  <div class="contio-cards" data-controller="sortable">
     <% @projects.each do |project| %>
 
-      <div class="contio-card">
-          <%= link_to project_path(project), style:"text-decoration:none" do %>
-              <div class="flex-between" id="card-top" style="font-size: 24px">
-                  <div id="tag-new">new</div>
-                  <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
-              </div>
+      <div class="contio-card" >
+        <%= link_to project_path(project), style:"text-decoration:none" do %>
+          <div class="flex-between" id="card-top" style="font-size: 24px">
+            <% if ((project.end_date - @time).to_i) < 30 %>
+              <div id="tag-high">high</div>
+            <% elsif ((project.end_date - @time).to_i) >= 60 && ((project.end_date - @time).to_i) <= 120 %>
+              <div id="tag-medium">medium</div>
+            <% else %>
+              <div id="tag-low">low</div>
+            <% end %>
+            <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
+          </div>
           <div id="dashboard-card">
-
-              <div id="project-name"><%= project.name %></div>
-              <div id="align-content-to-bottom">
-                <div style="font-size:12px; font-weight:300; color:gray">
-                  <% if @user.is_contractor %>
-                  For <%= project.client.first_name + " " + project.client.last_name%>
-                  <% else %>
-                  By <%= project.contractor.first_name + " " + project.contractor.last_name%>
-                  <% end %>
-                </div>
-
-
-                <div class="flex-between" id="middle-section">
-                  <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
-                  <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
-                </div>
-
-                <div id="location">
-                  <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
-                </div>
+            <div id="project-name"><%= project.name %></div>
+            <div id="align-content-to-bottom">
+              <div style="font-size:12px; font-weight:300; color:gray">
+                <% if @user.is_contractor %>
+                For <%= project.client.first_name + " " + project.client.last_name%>
+                <% else %>
+                By <%= project.contractor.first_name + " " + project.contractor.last_name%>
+                <% end %>
               </div>
-          <% end %>
-        </div>
-
-
+              <div class="flex-between" id="middle-section">
+                <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
+                <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
+              </div>
+              <div id="location">
+                <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-
     <% end %>
   </div>
 
   <% if @user.is_contractor? %>
-    <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="fa-solid fa-plus"></i> Add Project
+    <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus"></i>
     </button>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color:#15133C">
+          <div class="modal-header d-flex justify-content-start">
+            <button type="button" class="btn btn-close-x" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-angle-left"></i></button>
+            <h2>Add Project</h2>
           </div>
-          <div class="modal-body">
+
+
+
+          <div class="modal-body" >
             <%= render "form", project: @project %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+
           </div>
         </div>
       </div>
