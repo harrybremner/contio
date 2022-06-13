@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :sub_tasks, only: [:destroy]
   resource :users, only: [:show, :destroy]
   get "/inbox", to: "messages#inbox"
+  get "/calendar", to: "pages#calendar"
 end
 
 

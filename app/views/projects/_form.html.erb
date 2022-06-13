@@ -5,5 +5,6 @@
   <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date"} %>
   <%= f.input :total_price %>
   <%= f.input :description %>
+  <%= f.input :client, collection: @clients, input_html: { data: { controller: 'select2' }} %>
   <%= f.submit class: "btn-form" %>
 <% end %>

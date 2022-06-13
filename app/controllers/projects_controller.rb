@@ -24,6 +24,8 @@ class ProjectsController < ApplicationController
 
     @time = DateTime.parse(Time.new.to_s)
 
+    @clients = User.where(is_contractor: false)
+
   end
 
   def show

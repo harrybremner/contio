@@ -89,3 +89,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem "simple_calendar", "~> 2.4"
 
 gem 'bullet', group: 'development'
+
+gem "pg_search"
