@@ -7,5 +7,15 @@ import { application } from "./application"
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import MobileNavbarController from "./mobile_navbar_controller.js"
+application.register("mobile-navbar", MobileNavbarController)
+
 import ProjectSubscriptionController from "./project_subscription_controller.js"
 application.register("project-subscription", ProjectSubscriptionController)
+
+
+// const btn = document.querySelector('.fa-house');
+
+// btn.addEventListener('click', function onClick() {
+//   btn.style.backgroundColor = 'salmon';
+// });

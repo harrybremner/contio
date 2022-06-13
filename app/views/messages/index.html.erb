@@ -13,14 +13,14 @@ between the users %>
   </div>
 
 
-<%= simple_form_for [@project, @message],
-  html: { data: { action: "turbo:submit-end->project-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@project.name}",
-    wrapper_html: {class: "flex-grow-1"}
+  <%= simple_form_for [@project, @message],
+    html: { data: { action: "turbo:submit-end->project-subscription#resetForm" }, class: "d-flex" } do |f|
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@project.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
 </div>

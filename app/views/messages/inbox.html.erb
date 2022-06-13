@@ -12,7 +12,7 @@ This view is controlled by the messages_index action in the projects_controller 
       <% @projects.each do |project| %>
       <br>
         <%= link_to project_messages_path(project), style:"text-decoration:none" do %>
-          <div class="card-product">
+          <div class="card-product-inbox">
             <% if project.messages.last %>
                 <% if project.contractor.photo.key && project.client.photo.key %>
                   <div>
@@ -25,15 +25,15 @@ This view is controlled by the messages_index action in the projects_controller 
                 <% end %>
                   <div class="card-product-infos">
                     <h5>Project: <%= project.name  %></h5>
-                    <% if project.messages.last.user = current_user %>
-                      <p style="margin:0px">You: <%=project.messages.last.content%></p>
+                    <% if project.messages.last.user == current_user %>
+                      <p style="margin:0px"><strong>You: </strong><%=project.messages.last.content%></p>
                     <% else %>
-                      <p style="margin:0px"><%=project.messages.last.content%></p>
+                      <p style="margin:0px"><strong><%= project.messages.last.user.first_name %>:</strong> <%=project.messages.last.content%></p>
                     <% end %>
                     <% if project.messages.last.created_at.strftime('%d/%m/%Y') == Date.today.strftime('%d/%m/%Y') %>
-                      <p>Sent at: <%= project.messages.last.created_at.strftime('%H:%m')%></p>
+                      <p><em>Sent at: <%= project.messages.last.created_at.strftime('%H:%M')%></em></p>
                     <% else %>
-                      <p><%=  project.messages.last.created_at.strftime('%d.%m.%y') %></p>
+                      <p><em><%=  project.messages.last.created_at.strftime('%d.%m.%y') %></em></p>
                     <% end %>
                   </div>
             <% end %>
