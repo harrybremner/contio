@@ -64,13 +64,20 @@ We must do <% if Project.contractor? %>
 
       <% @project.tasks.each do |task| %>
 
+      <div class="contio-card">
+
         <div class="row">                                                                      <%# task div | - ROW 1 %>
 
+            <div class="col">
+              <div class="progresswheel">
 
-            <div class="col">                                                          <%# progress wheel   | - COL 1 %>
-               73%
-            </div>                                                                               <%# /progress wheel  %>
+                    <svg>
+                      <circle class="bg" cx="57" cy="57" r="26" />
+                      <circle class="meter-1" cx="57" cy="57" r="26" />
+                    </svg>
 
+              </div>                                                                           <%# /progress wheel  %>
+            </div>
 
             <div class="col">                                                                      <%# task | - COL 2 %>
 
@@ -110,7 +117,7 @@ We must do <% if Project.contractor? %>
             </div>                                                                               <%#/task colour-date %>
 
         </div>                                                                                        <%# / task div  %>
-
+      </div>
         <div class="border-bottom"></div>                                                               <%# underline %>
 
         <% end %>

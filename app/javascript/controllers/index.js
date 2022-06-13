@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ProjectSubscriptionController from "./project_subscription_controller.js"
 application.register("project-subscription", ProjectSubscriptionController)
+
+import SubTasksController from "./sub_tasks_controller.js"
+application.register("sub-tasks", SubTasksController)
