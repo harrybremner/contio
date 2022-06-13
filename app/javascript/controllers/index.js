@@ -7,5 +7,18 @@ import { application } from "./application"
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import MobileNavbarController from "./mobile_navbar_controller.js"
+application.register("mobile-navbar", MobileNavbarController)
+
 import ProjectSubscriptionController from "./project_subscription_controller.js"
 application.register("project-subscription", ProjectSubscriptionController)
+
+
+import SubTasksController from "./sub_tasks_controller.js"
+application.register("sub-tasks", SubTasksController)
+
+import Select2Controller from "./select2_controller.js"
+application.register("select2", Select2Controller)
+
+
+

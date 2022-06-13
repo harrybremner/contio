@@ -26,10 +26,17 @@ class SubTasksController < ApplicationController
     redirect_to user_path(current_user), status: :see_other
   end
 
+  def toggle
+    @sub_task = SubTask.find(params[:id])
+    @sub_task.update(completed: params[:completed])
+
+    render json: { message: "Success" }
+  end
+
   private
 
   def sub_task_params
-    params.require(:sub_task).permit(:name, :description)
+    params.require(:sub_task).permit(:name, :description, :completed)
   end
 
   def authorization_error

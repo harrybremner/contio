@@ -1,6 +1,7 @@
+<%= render "shared/navbar" %>
 <div class="cover d-flex align-items-center justify-content-center">
   <div class="text-left text-white">
-      <div class="justify-content-center">
+      <div class="justify-content-center home-text">
           <% if current_user %>
           <hr>
             <h1 class="typed-js">Hey, <%= @user.first_name %>.</h1>

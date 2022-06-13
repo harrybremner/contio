@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to project_path(@project)
     else
-      render :edit, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
-      render :edit, status: :unprocessable_entity
+      render :update, status: :unprocessable_entity
     end
   end
 

@@ -59,10 +59,12 @@ We must do <% if Project.contractor? %>
         <div class="contio-card" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
             <div class="flex-between">
-              <div class="flex-between" id="progress-section">
-                <div id="progress-bar"><i class="fa-solid fa-circle-notch"></i></div>
-                <p id="progress">73%</p>                                                                           <%# /progress wheel  %>
-              </div>
+              <div class="progresswheel">
+                  <svg>
+                    <circle class="bg" cx="57" cy="57" r="26" />
+                    <circle class="meter-1" cx="57" cy="57" r="26" />
+                  </svg>
+              </div>  
               <div id="task-name">
                   <div id="tasks-name"><%= task.name%></div>                                                   <%# no of subtasks | -ROW 2 %>
                   <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
@@ -82,8 +84,7 @@ We must do <% if Project.contractor? %>
           </div>
         <% end %>
 
-      </div>
-    <% end %>
+
 
     <!-- Button trigger modal -->
 

@@ -24,6 +24,8 @@ class ProjectsController < ApplicationController
 
     @time = DateTime.parse(Time.new.to_s)
 
+    @clients = User.where(is_contractor: false)
+
   end
 
   def show
@@ -41,7 +43,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.contractor = current_user
-    @project.client_id = 69
     if @project.save!
       redirect_to projects_path(@projects)
     else
@@ -59,8 +60,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :budget, :start_date, :end_date,
-      :total_price, :contractor, :client, :description)
+    params.require(:project).permit(:name, :budget, :start_date, :end_date, :contractor, :client, :description)
   end
 
   def authorization_error

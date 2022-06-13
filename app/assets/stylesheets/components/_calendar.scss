@@ -1,0 +1,39 @@
+.calendar-container {
+  width: auto;
+  height: auto;
+  margin-bottom: 72px;
+}
+
+.simple-calendar {
+  table {
+    min-height: 80vh;
+  }
+  .today {
+    background-color: $orange !important;
+  }
+}
+
+.meeting {
+  color: white;
+  padding: 0px 8px;
+  margin: 0px;
+  border-radius: 4px;
+  background-color: $dark-blue;
+  transition: background 0.3s ease;
+  // font-size: 5px;
+  width: auto;
+}
+
+.meeting p {
+  font-size: 7px;
+}
+
+
+.meeting:hover {
+  background-color: $blue;
+  color: white;
+}
+
+.day {
+  max-width: 57px !important;
+}

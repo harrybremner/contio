@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 .cover {
   background-color: $orange;
+  min-height: 100vh;
   height: 600px;
   width: 100%;
   text-align: left;
@@ -29,5 +30,9 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  margin: 20px;
+}
+
+.home-text{
   margin: 20px;
 }
