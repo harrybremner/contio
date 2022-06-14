@@ -5,10 +5,21 @@ class Task < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true
   validates_presence_of :start_date, :end_date
-  validate :end_date_is_after_start_date
-  validate :start_date_is_before_today
+  validate :end_date_is_after_start_date, on: :create
+  validate :start_date_is_before_today, on: :create
   has_many_attached :files
 
+
+  after_commit :check_project_completed
+
+
+  def check_project_completed
+    if self.project.tasks.where(completed: true).count == self.project.tasks.count
+      self.project.update(completed: true)
+    else
+      self.project.update(completed: false)
+    end
+  end
 
 
   private

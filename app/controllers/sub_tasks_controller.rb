@@ -29,6 +29,7 @@ class SubTasksController < ApplicationController
   def toggle
     @sub_task = SubTask.find(params[:id])
     @sub_task.update(completed: params[:completed])
+    
 
     render json: { message: "Success" }
   end

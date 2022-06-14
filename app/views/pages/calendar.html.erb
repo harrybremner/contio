@@ -3,10 +3,12 @@
     <%= date %>
 
     <% projects.each do |project| %>
+      <%=  link_to project_path(project), style:"text-decoration:none !important" do %>
       <div class="meeting">
         <p><%= project.name %></p>
         <small><%= project.time unless project.multi_days? %></small>
       </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

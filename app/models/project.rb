@@ -7,11 +7,12 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :budget, presence: true
   validates_presence_of :start_date, :end_date
-  validate :end_date_is_after_start_date
-  validate :start_date_is_before_today
+  validate :end_date_is_after_start_date, on: :create
+  validate :start_date_is_before_today, on: :create
   #trying to add stuff for simple_calendar to work
   alias_attribute :start_time, :start_date
   alias_attribute :end_time, :end_date
+
 
   def multi_days?
     (end_time.to_date - start_time.to_date).to_i >= 1

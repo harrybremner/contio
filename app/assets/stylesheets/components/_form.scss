@@ -1,3 +1,45 @@
+.form {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  // background-color: $off-white;
+  padding: 10px;
+  padding-top: 16px;
+  // background-color: $dark-blue;
+
+  h2 {
+    text-align: center;
+    color: $gray;
+  }
+
+  h3 {
+    color: $gray;
+    font-weight: 300;
+    font-size: 14px;
+    padding-top: 7px;
+
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .dialog {
+
+  }
+
+  .content {
+
+  }
+  .header {
+
+  }
+
+  .body {
+
+  }
+
+  .footer {
+
 .form-style {
   background-color: $dark-blue;
   color: white;

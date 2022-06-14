@@ -1,7 +1,7 @@
 #task {
   margin-bottom: 10px;
   position: relative;
-  height: 75px;
+  height: auto;
 
   i {
     font-size: 45px;
@@ -203,4 +203,8 @@
   position: sticky;
   top: 66px;
   background-color: $off-white;
+
+.completed {
+  background-color: $orange;
+  opacity: 0.5;
 }

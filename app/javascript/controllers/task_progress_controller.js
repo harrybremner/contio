@@ -24,4 +24,3 @@ export default class extends Controller {
 
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
-}

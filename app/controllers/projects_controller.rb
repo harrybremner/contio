@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
       @in_progress_projects = Project.where(client: @user, completed: false).count
     end
 
-    # need to make this more
+    # in progress tasks
     @in_progress_tasks = Task.where(completed: false).count
     @completed_tasks = Task.where(completed: true).count
 
@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
       else
         authorization_error
       end
+
       @in_progress_tasks = (@project.tasks.where(completed: false).count / @project.tasks.count) * 100
       @completed_tasks = (@project.tasks.where(completed: true).count / @project.tasks.count) * 100
   end
@@ -60,6 +61,12 @@ class ProjectsController < ApplicationController
 
 
   private
+
+  def completed_tasks
+    if task.sub_tasks.where(completed: true).count == task.sub_tasks.count
+      task.completed == true
+    end
+  end
 
   def project_params
     params.require(:project).permit(:name, :budget, :start_date, :end_date, :contractor, :client, :description)
