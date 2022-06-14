@@ -40,7 +40,6 @@ class ProjectsController < ApplicationController
       @task = Task.new
       @time = DateTime.parse(Time.new.to_s)
       if @project.client == current_user || @project.contractor == current_user
-        @user = current_user
         @tasks = Task.all
       else
         authorization_error
@@ -53,7 +52,9 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.contractor = current_user
-    if @project.save!
+    @project.client = User.find(project_params[:client_id])
+    if @project.save
+      
       redirect_to projects_path(@projects)
     else
       render :index, status: :unprocessable_entity
@@ -76,7 +77,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :budget, :start_date, :end_date, :contractor, :client, :description)
+    params.require(:project).permit(:name, :budget, :start_date, :end_date, :contractor_id, :client_id, :description)
   end
 
   def authorization_error
