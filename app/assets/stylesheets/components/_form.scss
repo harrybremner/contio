@@ -19,25 +19,10 @@
 
 //   }
 
-//   .center {
-//     text-align: center;
-//   }
-
-//   .dialog {
-
-//   }
-
-//   .content {
-
-//   }
-//   .header {
-
-//   }
-
-//   .body {
-
-//   }
-// }
+  .center {
+    text-align: center;
+  }
+}
 
 // .form-style {
 //   background-color: $dark-blue;
@@ -57,5 +42,52 @@
 //   }
 // }
 
+  label {
+    color: rgb(171, 171, 171);
+    font-size: 14px;
+    font-weight: 300;
+  }
 
+  textarea {
+    background-color: #15133c;
+    border: 0px;
+    border-bottom: 1px solid white;
+    color: $off-white;
+  }
+
+  span {
+    background-color: #15133c;
+    border: 0px;
+    border-bottom: 1px solid white;
+  }
+
+
+.modal-content {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  .modal-header {
+   background-color: $off-white;
+  }
+}
+
+
+
+.modal-content {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: transparent;
+  border: transparent;
+    .modal-body {
+      background-color: $dark-blue;
+  }
+}
+
+.transparent-colour{
+  input{
+    background-color: transparent !important;
+    border: 0px;
+    border-bottom: 1px solid white;
+    color: $off-white !important;
+  }
+}
 
