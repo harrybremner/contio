@@ -23,6 +23,8 @@ gem "turbo-rails"
 
 gem "date"
 
+gem 'acts-as-list', '~> 0.1.2'
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
