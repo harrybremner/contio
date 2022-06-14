@@ -6,36 +6,49 @@ We must do <% if Project.contractor? %>
 
 
 <div class="main-container-all " id="task-page" data-controller="task-progress">
-  <h1 class="subtask-h1"><%= @task.name %> </h1>
-  <div class="subtask-intros">
 
-      <div class="row">
+ <div class="row" style="padding-bottom: 5px; padding-top: 5px">
+  <h1 class="subtask-h1"><strong><%= @task.name %></strong> </h1>
+</div>
+<div class="border-bottom"></div>
+<br>
+<br>
+      <div class="row" style="padding-bottom: 20px; padding-left: 10px">
 
                   <div class="col">
 
                       <div class="progresswheel">
                         <div style="position:relative">
-                            <svg>
+                              <svg>
                               <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= (380 - (360.0 * (@percentage / 100.0) )) %>;  transition-property: stroke-dashoffset, 360, <%= (380 - (360.0 * (@percentage / 100.0) )) %>; transition-duration: 1.5s;" class="meter-1" cx="57" cy="57" r="52" data-offset="<%= (380 - (360.0 * (@percentage / 100.0) )) %>" />
+                              <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 360 - (360.0 * @percentage / 100.0) %>;"class="meter-1" cx="57" cy="57" r="52" />
                             </svg>
-                            <h2 data-task-progress-target="percentage" style="position:absolute; top:36%; left:8%;"> <%= @percentage.round %> %</h2>
+                            <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:20%"> <%= @percentage.round %> % </h2>
                         </div>
                       </div>
+                  </div>
 
-        <div class="subtask-intro">
-            <div>
-              <p> Start Date: </p>
-              <p> <strong><%= @task.start_date.strftime("%d %b") %> </strong></p>
-            </div>
-        </div>
-        <div class="subtask-intro">
-            <div>
-              <p> End Date: </p>
-              <p> <strong><%= @task.end_date.strftime("%d %b") %> </strong></p>
-            </div>
-        </div>
-  </div>
+                  <div class="col">
+                    <div class="row" style="padding-bottom: 10px">
+                      <div class="subtask-intro">
+                          <div>
+                            <h6> Start Date: </h6>
+                            <h6> <strong><%= @task.start_date.strftime("%d %b") %> </strong></h6>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="subtask-intro">
+                          <div>
+                            <h6> End Date: </h6>
+                            <h6> <strong><%= @task.end_date.strftime("%d %b") %> </strong></h6>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+
 
 
 
@@ -53,9 +66,9 @@ We must do <% if Project.contractor? %>
     <% @task.sub_tasks.each do |sub_task|%>
 
 
-      <div class="contio-card">
+      <div class="contio-card" style="margin-bottom: 5px">
 
-        <div class="row">
+        <div class="row" >
               <div class="col-2" data-controller="sub-tasks" data-task-id="<%= @task.id %>" data-project-id="<%= @task.project.id %>">
                 <%= form_with(model: sub_task) do |form| %>
                   <%= form.check_box :completed,
@@ -68,10 +81,11 @@ We must do <% if Project.contractor? %>
                 <% end %>
               </div>
 
-              <div class="col">
+              <div class="col" style="padding-left: 20px; padding-top: 8px" >
                   <div class="row">
-                    <p><strong> <%=  sub_task.name %> </strong></p>
+                    <p style="margin-bottom: 1px;"><strong> <%=  sub_task.name %> </strong></p>
                   </div>
+                  <div class="border-bottom" style="margin-right: 70px"></div>
                   <div class="row">
                     <p><%=  sub_task.description %></p>
                   </div>
@@ -79,9 +93,9 @@ We must do <% if Project.contractor? %>
               </div>
         </div>
       </div>
-    <br>
+
     <% end %>
-    <div class="border-bottom"></div>
+
 
     </div>
     </div>

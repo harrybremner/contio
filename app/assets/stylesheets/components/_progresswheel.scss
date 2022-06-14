@@ -1,25 +1,28 @@
-svg {
-  width: 114px;
-  height: 114px;
 
-}
+  svg {
+    width: 114px;
+    height: 114px;
 
-.bg {
-  fill: none;
-  stroke-width: 10px;
-  stroke: #1A2C34;
-}
+  }
 
-[class^="meter-"] {
-  fill: none;
-  stroke-width: 10px;
-  stroke-linecap: round;
+  .bg {
+    fill: none;
+    stroke-width: 10px;
+    stroke: #1A2C34;
+  }
 
-}
+  [class^="meter-"] {
+    fill: none;
+    stroke-width: 10px;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 
-.meter-1 {
-  stroke-dasharray: 360;
+  }
 
-  stroke: #EC994B;
-  animation: progress-1 1s ease-out;
-}
+  .meter-1 {
+    stroke-dasharray: 360;
+
+    stroke: #EC994B;
+    animation: progress-1 1s ease-out;
+  }
