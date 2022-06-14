@@ -21,3 +21,6 @@ application.register("select2", Select2Controller)
 
 import SortableController from "./sortable_controller.js"
 application.register("sortable", SortableController)
+
+import TaskProgressController from "./task_progress_controller.js"
+application.register("task-progress", TaskProgressController)

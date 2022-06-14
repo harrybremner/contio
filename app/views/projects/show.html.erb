@@ -8,9 +8,9 @@ We must do <% if Project.contractor? %>
 <div class="logo d-flex justify-content-center"><h2>contio</h2></div>
 <div class="main-container-all" id="task-page">
 
-  <h1 class="subtask-h1"><%= @project.name %></h1>
-
-    <div class="task-intros">
+  <h1 class="subtask-h1" style="padding-bottom: 5px"><%= @project.name %></h1>
+  <div class="border-bottom" style="padding-left: 150px; padding-right: 150px"></div>
+    <div class="task-intros" style="padding-left: 9px; padding-top: 15px;">
         <div class="task-intro">
           <% if @user.is_contractor %>
             <div>
@@ -63,7 +63,7 @@ We must do <% if Project.contractor? %>
             <p><%= @project.tasks.where(completed: false).count %> tasks</p>
             </div>
           </div>
-          <div class="vl-green">
+          <div class="vl-green" >
             <div class="vl-padding">
             <strong>Completed: </strong>
             <p><%= @project.tasks.where(completed: true).count %> tasks</p>
@@ -72,7 +72,7 @@ We must do <% if Project.contractor? %>
         </div>
 
     </div>
-  </div>
+
 
 
 
@@ -84,34 +84,35 @@ We must do <% if Project.contractor? %>
           </button>
         <% end %>
       </div>                                                  <%#Tasks header    | - ROW 1 %>
-
+  </div>
 
 
 <%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
       <% @project.tasks.each do |task| %>
-        <div class="contio-card <%= task.completed ? "completed" : "" %>" id="task">
+        <div class="contio-card" id="task" style="padding: 5px 15px 0px 17px">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
             <div>
 
               <div class="flex-between">
                 <div id="task-name">
-                    <div id="tasks-name"><%= task.name%></div>
-
+                   <strong> <div id="tasks-name"><%= task.name%></div> </strong>
                 </div>
                 <div id="priority">
-                  <div class="priority-sign">
-                    <% if task.priority == "low"  %>
-                      <div id="low-sign">low</div>
-                    <% elsif task.priority == "medium" %>
-                      <div id="medium-sign">medium</div>
-                    <% else task.priority == "high" %>
-                      <div id="high-sign">high</div>
+                  <div <%= task.completed ? "completed" : "" %>>
+                    <%if task.sub_tasks.count == task.sub_tasks.where(completed: true).count && task.sub_tasks.count > 0 %>
+                      <div id="tag-completed">Done</div>
+                    <% elsif ((task.end_date - @time).to_i) < 30 %>
+                      <div id="tag-high">High</div>
+                    <% elsif ((task.end_date - @time).to_i) >= 60 && ((task.end_date - @time).to_i) <= 120 %>
+                      <div id="tag-medium">Medium</div>
+                    <% else %>
+                      <div id="tag-low">Low</div>
                     <% end %>
                   </div>
                 </div>
               </div>
-              <div class="flex-between">
-                <p class="due-date"><%= task.sub_tasks.count %> Subtasks</p>
+              <div class="flex-between" style="padding-left: 8px">
+                <%# <p class="due-date"><%= task.sub_tasks.count Subtasks</p> %>
                 <li class="media mb-3 progress-bar-margin">
                   <div class="media-body align-self-center">
                     <div class="small text-muted mb-1"><%= task.sub_tasks.count.to_f > 0.0 ? (((task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100)).truncate() : 0 %>% complete</div>
@@ -120,7 +121,7 @@ We must do <% if Project.contractor? %>
                       </div>
                   </div>
                 </li>
-                <p class="due-date">Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></p>
+                <p class="due-date" style="padding-right: 15px; margin-top: 2px">Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></p>
               </div>
             </div>
           <% end %>
