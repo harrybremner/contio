@@ -203,8 +203,30 @@
   position: sticky;
   top: 66px;
   background-color: $off-white;
+}
 
 .completed {
   background-color: $orange;
   opacity: 0.5;
+}
+
+
+.vl-green {
+  border-left: 12px solid #1DDD88;
+  height: 44px;
+  margin: 12px;
+}
+
+.vl-orange {
+  border-left: 12px solid #FFC65A;
+  height: 44px;
+  margin: 12px;
+}
+
+.flex-container2 {
+  display: flex;
+}
+
+.vl-padding {
+  padding-left: 16px;
 }

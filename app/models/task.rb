@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   validate :start_date_is_before_today, on: :create
   has_many_attached :files
 
+  scope :completed, -> { where(completed: true) }
 
   after_commit :check_project_completed
 
