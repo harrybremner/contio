@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
       @task = Task.new
       if @project.client == current_user || @project.contractor == current_user
-        @user = current_user
         @tasks = Task.all
       else
         authorization_error

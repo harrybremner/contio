@@ -5,8 +5,8 @@ class Task < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true
   validates_presence_of :start_date, :end_date
-  validate :end_date_is_after_start_date, on: :create
-  validate :start_date_is_before_today, on: :create
+  validate :end_date_is_after_start_date
+  validate :start_date_is_before_today
   has_many_attached :files
 
   scope :completed, -> { where(completed: true) }

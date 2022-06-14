@@ -12,7 +12,7 @@ We must do <% if Project.contractor? %>
 
     <div class="task-intros">
         <div class="task-intro">
-          <% if @user.is_contractor %>
+          <% if current_user.is_contractor %>
             <div>
               <i class="fa-solid icon fa-list-check"></i>
             </div>
@@ -78,7 +78,7 @@ We must do <% if Project.contractor? %>
 
       <div id="tasks-title">
         <div> <strong>Tasks:</strong></div>
-        <% if @user.is_contractor? %>
+        <% if current_user.is_contractor? %>
           <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fa-solid fa-plus"></i> Add task
           </button>
@@ -136,7 +136,7 @@ We must do <% if Project.contractor? %>
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
