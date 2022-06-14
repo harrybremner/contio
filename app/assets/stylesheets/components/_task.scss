@@ -34,7 +34,7 @@
 
 .progress {
   height: 8px;
-  width: 106px;
+  width: 150px;
 }
 
   #task-name {
@@ -199,12 +199,15 @@
 
 .sticky-show-page {
   position: sticky;
-  top: 66px;
+  top: 58px;
   background-color: $off-white;
+  z-index: 11;
+  margin: 0px -16px;
+  padding: 0px 16px;
 }
 
 .completed {
-  background-color: $orange;
+  background-color: $green !important;
   opacity: 0.5;
 }
 

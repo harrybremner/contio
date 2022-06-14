@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       @percentage = 100.0
     else
       if @completed_tasks == 0
-        @percentage = 0.001
+         @percentage = 0.001
       else
         @percentage = (@completed_tasks.to_f / @sub_tasks.length.to_f ) * 100
       end
