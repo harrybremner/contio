@@ -7,6 +7,8 @@ export default class extends Controller {
   connect() {
 
     console.log(this.svgTarget.dataset.offset)
+    const loading = this.svgTarget.dataset.offset;
+
 
   }
 
