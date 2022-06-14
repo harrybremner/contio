@@ -1,5 +1,6 @@
 #subtaskcheckbox {
-  margin: 16px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
 
@@ -12,9 +13,9 @@ input[type="checkbox"] {
   /* Not removed via appearance */
   margin: 0;
   font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
+  color: #75787C;
+  width: 2em;
+  height: 2em;
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
@@ -24,12 +25,12 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
   content: "";
-  width: 0.65em;
-  height: 0.65em;
+  width: 1.2em;
+  height: 1.2em;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em var(--form-control-color);
-  background-color: CanvasText;
+  background-color: #E29D59;
 }
 
 input[type="checkbox"]:checked::before {
