@@ -6,7 +6,7 @@ We must do <% if Project.contractor? %>
 
 
 <div class="main-container-all " id="task-page" data-controller="task-progress">
-  <h1 class="subtask-h1"><%= @task.name %></h1>
+  <h1 class="subtask-h1"><%= @task.name %> </h1>
   <div class="subtask-intros">
 
       <div class="row">
@@ -23,8 +23,6 @@ We must do <% if Project.contractor? %>
                         </div>
                       </div>
 
-                  </div>
-      </div>
         <div class="subtask-intro">
             <div>
               <p> Start Date: </p>
@@ -100,7 +98,7 @@ We must do <% if Project.contractor? %>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add New Subtask</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

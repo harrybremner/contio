@@ -16,8 +16,13 @@ application.register("project-subscription", ProjectSubscriptionController)
 import Select2Controller from "./select2_controller.js"
 application.register("select2", Select2Controller)
 
+import SortableController from "./sortable_controller.js"
+application.register("sortable", SortableController)
+
 import SubTasksController from "./sub_tasks_controller.js"
 application.register("sub-tasks", SubTasksController)
 
 import TaskProgressController from "./task_progress_controller.js"
 application.register("task-progress", TaskProgressController)
+
+window.Stimulus = application.start()

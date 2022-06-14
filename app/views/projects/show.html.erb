@@ -5,91 +5,110 @@ If they are a client, they cannot add edit the project or task or add new ones.
 We must do <% if Project.contractor? %>
 
 
-
+<div class="logo d-flex justify-content-center"><h2>contio</h2></div>
 <div class="main-container-all" id="task-page">
+
   <h1 class="subtask-h1"><%= @project.name %></h1>
-  <div class="task-intros">
-      <div class="task-intro">
-        <% if @user.is_contractor %>
+
+    <div class="task-intros">
+        <div class="task-intro">
+          <% if @user.is_contractor %>
+            <div>
+              <i class="fa-solid icon fa-list-check"></i>
+            </div>
+            <div>
+              <p> Client name: </p>
+              <p> <strong><%= @project.client.first_name + " " + @project.client.last_name%></strong> </p>
+            </div>
+          <% else %>
+            <div>
+              <i class="fa-solid icon fa-list-check"></i>
+            </div>
+            <div>
+              <p> Contractor: </p>
+              <p><strong><%= @project.contractor.first_name + " " + @project.contractor.last_name%></strong></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="task-intro">
           <div>
             <i class="fa-solid icon fa-list-check"></i>
           </div>
           <div>
-            <p> Client name: </p>
-            <p> <strong><%= @project.client.first_name + " " + @project.client.last_name%></strong> </p>
+            <p> Due: </p>
+            <p> <strong><%= @project.end_date.strftime("%d %b") %> </strong></p>
           </div>
-        <% else %>
-          <div>
-            <i class="fa-solid icon fa-list-check"></i>
-          </div>
-          <div>
-            <p> Contractor: </p>
-            <p><strong><%= @project.contractor.first_name + " " + @project.contractor.last_name%></strong></p>
-          </div>
-        <% end %>
-      </div>
-      <div class="task-intro">
-        <div>
-          <i class="fa-solid icon fa-list-check"></i>
         </div>
-        <div>
-          <p> Due: </p>
-          <p> <strong><%= @project.end_date.strftime("%d %b") %> </strong></p>
-        </div>
-      </div>
-  </div>
+    </div>
+
 
   <div class="description-project">
     <p><strong>Description: </strong> </p>
     <p> <%= @project.description %></p>
   </div>
 
-<h5>Progress bar</h5>
-<div class="progress mb-3">
-  <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">50%</div>
-  <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
-</div>
+  <%# Progress bar %>
+  <div class="sticky-show-page">
+    <div>
+      <h5>Progress bar</h5>
+        <p>You have <strong><%= @project.tasks.where(completed: false).count %> tasks</strong> remaining.</p>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-success" role="progressbar" style="width:<%= @completed_tasks %>%" aria-valuenow="<%= @completed_tasks %> " aria-valuemin="0" aria-valuemax="100">%</div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width:<%= @in_progress_tasks %>%" aria-valuenow="<%= @in_progress_tasks %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <%# <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div> %>
+      </div>
+        <div class="progress-bar bg-success" role="progressbar" style="width:20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"></div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width:20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"></div>
+    </div>
+  </div>
 
 
 
       <div id="tasks-title">
         <div> <strong>Tasks:</strong></div>
-        <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <i class="fa-solid fa-plus"></i> Add task
-        </button>
-      </div>
+        <% if @user.is_contractor? %>
+          <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-plus"></i> Add task
+          </button>
+        <% end %>
+      </div>                                                  <%#Tasks header    | - ROW 1 %>
 
+
+
+<%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
       <% @project.tasks.each do |task| %>
-        <div class="contio-card" id="task">
+        <div class="contio-card <%= task.completed ? "completed" : "" %>" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
-            <div class="flex-between">
+            <div>
 
+              <div class="flex-between">
+                <div id="task-name">
+                    <div id="tasks-name"><%= task.name%></div>
 
-                      <div class="progresswheel">
-                            <svg>
-                              <circle class="bg" cx="57" cy="57" r="52" />
-                              <circle  class="meter-1" cx="57" cy="57" r="52" />
-                            </svg>
-                        </div>
-                      </div>
-
-                  </div>
-              <div id="task-name">
-                  <div id="tasks-name"><%= task.name%></div>
-                  <div id="tasks-remaining"><%= task.sub_tasks.count %> Subtasks</div>
-              </div>
-              <div id="priority">
-                <div class="priority-sign">
-                  <% if task.priority == "low"  %>
-                    <div id="low-sign">low</div>
-                  <% elsif task.priority == "medium" %>
-                    <div id="medium-sign">medium</div>
-                  <% else task.priority == "high" %>
-                    <div id="high-sign">high</div>
-                  <% end %>
                 </div>
-                <div>Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></div>
+                <div id="priority">
+                  <div class="priority-sign">
+                    <% if task.priority == "low"  %>
+                      <div id="low-sign">low</div>
+                    <% elsif task.priority == "medium" %>
+                      <div id="medium-sign">medium</div>
+                    <% else task.priority == "high" %>
+                      <div id="high-sign">high</div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-between">
+                <p class="due-date"><%= task.sub_tasks.count %> Subtasks</p>
+                <li class="media mb-3 progress-bar-margin">
+                  <div class="media-body align-self-center">
+                    <div class="small text-muted mb-1"><%= task.sub_tasks.count.to_f > 0.0 ? ((task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100) : 0 %>% complete</div>
+                      <div class="progress mb-1" style="height: 3px;">
+                        <div class="progress-bar" role="progressbar" style="width: <%= (task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100 %>%;" aria-valuenow="<%= (task.sub_tasks.where(completed: true).count / task.sub_tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+                </li>
+                <p class="due-date">Due: <strong><%=  task.end_date.strftime("%d %b") %></strong></p>
               </div>
             </div>
           <% end %>
@@ -109,7 +128,7 @@ We must do <% if Project.contractor? %>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -122,4 +141,4 @@ We must do <% if Project.contractor? %>
       </div>
     </div>
   </div>
-</div>                                                                                            <%# /MAIN CONTAINER %>
+</div>
