@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   alias_attribute :end_time, :end_date
 
 
+
   def multi_days?
     (end_time.to_date - start_time.to_date).to_i >= 1
   end
