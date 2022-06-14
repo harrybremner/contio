@@ -43,16 +43,24 @@ We must do <% if Project.contractor? %>
         <%= link_to project_path(project), style:"text-decoration:none" do %>
           <div class="flex-between" id="card-top" style="font-size: 24px">
             <% if ((project.end_date - @time).to_i) < 30 %>
-              <div id="tag-high">high</div>
+              <div id="tag-high">High</div>
             <% elsif ((project.end_date - @time).to_i) >= 60 && ((project.end_date - @time).to_i) <= 120 %>
-              <div id="tag-medium">medium</div>
+              <div id="tag-medium">Medium</div>
             <% else %>
-              <div id="tag-low">low</div>
+              <div id="tag-low">Low</div>
             <% end %>
             <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
           </div>
           <div id="dashboard-card">
 
+            <%# Progress bar %>
+              <div class="flex-container-progress-index">
+                Progress <%= ((project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100).truncate() %> %
+                <div class="progress progress-index mb-1">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width:<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>%" aria-valuenow="<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
 
               <div id="project-name"><%= project.name %></div>
               <div id="align-content-to-bottom">
@@ -66,16 +74,7 @@ We must do <% if Project.contractor? %>
 
 
                 <div class="flex-between" id="middle-section">
-                  <div id="progress-bar">
-                    <div id="progresswheelsmall">
-                        <div style="position:relative">
-                            <svg>
-                              <circle class="bg" cx="30" cy="30" r="22" />
-                              <circle style="stroke-dashoffset: 0;  transition-property: stroke-dashoffset, 360, 0; transition-duration: 3s;" class="meter-1" cx="30" cy="30" r="22" data-offset="0" />
-                            </svg>
-                        </div>
-                    </div>
-                  </div>
+
                   <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
                 </div>
 
