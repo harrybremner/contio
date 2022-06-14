@@ -30,7 +30,6 @@
   background-color: $orange;
   transition: width 0.6s ease;
   color: $orange;
-
 }
 
 .progress {
@@ -179,7 +178,6 @@
   flex-direction: column;
   align-self: center;
   padding: 12px;
-
 }
 
 .progress-bar-margin {
@@ -229,4 +227,29 @@
 
 .vl-padding {
   padding-left: 16px;
+}
+
+
+.progress-bar-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: $orange;
+  transition: width 0.6s ease;
+  color: $orange;
+}
+
+.progress-index {
+  height: 5px !important;
+  width: auto;
+}
+
+.flex-container-progress-index {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
