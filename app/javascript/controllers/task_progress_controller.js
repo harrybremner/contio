@@ -3,10 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="task-progress"
 export default class extends Controller {
   static targets = ["complete", "svg", "percentage"]
+
   connect() {
 
     // console.log(this.svgTarget.dataset.offset)
     // const loading = this.svgTarget.dataset.offset;
+
 
   }
 
@@ -19,10 +21,8 @@ export default class extends Controller {
       }
     })
     const percentageComplete = totalCompleted / this.completeTargets.length;
-    // console.log(totalCompleted)
-    // console.log(this.completeTargets.length)
-    // console.log(totalCompleted / this.completeTargets.length)
+  
     this.svgTarget.style.strokeDashoffset = 380 - (360 * percentageComplete )
+
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
-}
