@@ -69,6 +69,7 @@ We must do <% if Project.contractor? %>
       </div>                                                  <%#Tasks header    | - ROW 1 %>
 
 
+
 <%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
       <% @project.tasks.each do |task| %>
         <div class="contio-card <%= task.completed ? "completed" : "" %>" id="task">
@@ -78,6 +79,7 @@ We must do <% if Project.contractor? %>
               <div class="flex-between">
                 <div id="task-name">
                     <div id="tasks-name"><%= task.name%></div>
+                  
                 </div>
                 <div id="priority">
                   <div class="priority-sign">

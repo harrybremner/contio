@@ -40,5 +40,21 @@
 
   .footer {
 
+.form-style {
+  background-color: $dark-blue;
+  color: white;
+  height: 550px;
+  border-top-left-radius: 10px;
+  width: 325px;
+
+
+
+}
+
+.modal-content {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  .modal-header {
+   background-color: $off-white;
   }
 }

@@ -116,11 +116,11 @@
   color: $white;
   width: 50px;
   font-size: 22px;
-  position: relative;
-  bottom: -74px;
+  position: fixed;
+  bottom: 29px;
   border: 4px solid $off-white;
   text-align: center;
-  left: 147px;
+  left: calc(50% - 25px);
   z-index: 1000;
 }
 
@@ -136,4 +136,12 @@
   left: 147px;
   z-index: 1000;
 
+}
+
+.btn-close-x {
+  border-radius: 50px;
+  height: 50px;
+  color: $dark-blue;
+  width: 50px;
+  font-size: 20px;
 }
