@@ -7,9 +7,9 @@
     <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date"} %>
 
 
-    
+
       <%= f.input :budget %>
-      <%= f.input :client, collection: @clients, label_method: :full_name, input_html: {data: {controller: 'select2'}} %>
+      <%= f.association :client, collection: @clients, label_method: :full_name %>
 
 
     <%= f.input :description %>
