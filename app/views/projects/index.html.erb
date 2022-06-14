@@ -54,17 +54,7 @@ We must do <% if Project.contractor? %>
             <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
           </div>
           <div id="dashboard-card">
-
-            <%# Progress bar %>
-              <div class="flex-container-progress-index">
-                Progress <%= ((project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100).truncate() %> %
-                <div class="progress progress-index mb-1">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width:<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>%" aria-valuenow="<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100">
-                  </div>
-                </div>
-              </div>
-
-          <div id="dashboard-card">
+  
             <div id="project-name"><%= project.name %></div>
             <div id="align-content-to-bottom">
               <div style="font-size:12px; font-weight:300; color:gray">
@@ -75,6 +65,15 @@ We must do <% if Project.contractor? %>
                 <% end %>
               </div>
 
+                            <%# Progress bar %>
+              <div class="flex-container-progress-index">
+                Progress <%= ((project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100).truncate() %> %
+                <div class="progress progress-index mb-1">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width:<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>%" aria-valuenow="<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+
                 <div class="flex-between" id="middle-section">
 
                   <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
@@ -83,18 +82,17 @@ We must do <% if Project.contractor? %>
                 <div id="location">
                   <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
                 </div>
-                <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
-              </div>
 
-              <div id="location">
-                <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
-              </div>
 
-          </div>
-        <% end %>
+
+
+              </div>
+            </div>
+
         <% end %>
       </div>
-</div>
+    <% end %>
+  </div>
 
   <% if @user.is_contractor? %>
 
