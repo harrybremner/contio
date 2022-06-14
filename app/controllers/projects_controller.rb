@@ -5,9 +5,12 @@ class ProjectsController < ApplicationController
     # user projects
     if @user.is_contractor
       @projects = Project.where(contractor: @user)
+
     else
       @projects = Project.where(client: @user)
     end
+
+    @tasks = Task.where(project: @projects)
 
     # in progress projects
     if @user.is_contractor
@@ -16,14 +19,17 @@ class ProjectsController < ApplicationController
       @in_progress_projects = Project.where(client: @user, completed: false).count
     end
 
-    # in progress tasks
-    @in_progress_tasks = Task.where(completed: false).count
-    @completed_tasks = Task.where(completed: true).count
+    # in progress tasks and completed tasks
+    @completed_tasks = @tasks.completed.count
+    # @tasks.each do |task|
+    #   if task.completed?
+    #     @completed_tasks += 1
+    #   end
+    @in_progress_tasks = @tasks.count - @completed_tasks
+
 
     @project = Project.new
-
     @time = DateTime.parse(Time.new.to_s)
-
     @clients = User.where(is_contractor: false)
 
   end
