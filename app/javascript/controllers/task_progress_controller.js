@@ -24,4 +24,3 @@ export default class extends Controller {
     this.svgTarget.style.strokeDashoffset = 360 * percentageComplete
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
-}

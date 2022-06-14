@@ -1,0 +1,11 @@
+  <% date_range.each_slice(7) do |dates| %>
+    <tr>
+      <% dates.each do |date| %>
+        <%= content_tag :td, class: calendar.td_classes_for(date) do %>
+          <% passed_block.call date.day, sorted_events.fetch(date, []) %>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+
+  

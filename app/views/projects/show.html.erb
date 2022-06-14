@@ -61,15 +61,17 @@ We must do <% if Project.contractor? %>
 
       <div id="tasks-title">
         <div> <strong>Tasks:</strong></div>
-        <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <i class="fa-solid fa-plus"></i> Add task
-        </button>
+        <% if @user.is_contractor? %>
+          <button type="button" class="btn btn-task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-plus"></i> Add task
+          </button>
+        <% end %>
       </div>                                                  <%#Tasks header    | - ROW 1 %>
 
 
 <%# (task.sub_tasks.where(completed: true).count.to_i / task.sub_tasks.count.to_i)  %>
       <% @project.tasks.each do |task| %>
-        <div class="contio-card" id="task">
+        <div class="contio-card <%= task.completed ? "completed" : "" %>" id="task">
           <%=  link_to project_task_path(@project, task), style:"text-decoration:none !important" do %>
             <div>
 
@@ -119,7 +121,7 @@ We must do <% if Project.contractor? %>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -132,4 +134,4 @@ We must do <% if Project.contractor? %>
       </div>
     </div>
   </div>
-</div>                                                                                            <%# /MAIN CONTAINER %>
+</div>

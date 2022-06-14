@@ -1,7 +1,7 @@
 #task {
   margin-bottom: 10px;
   position: relative;
-  height: 75px;
+  height: auto;
 
   i {
     font-size: 45px;
@@ -197,4 +197,9 @@
 .due-date {
     padding: 10px;
     font-size: 14px;
+}
+
+.completed {
+  background-color: $orange;
+  opacity: 0.5;
 }
