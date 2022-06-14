@@ -55,7 +55,16 @@ We must do <% if Project.contractor? %>
 
 
                 <div class="flex-between" id="middle-section">
-                  <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
+                  <div id="progress-bar">
+                    <div id="progresswheelsmall">
+                        <div style="position:relative">
+                            <svg>
+                              <circle class="bg" cx="30" cy="30" r="22" />
+                              <circle style="stroke-dashoffset: 0;  transition-property: stroke-dashoffset, 360, 0; transition-duration: 3s;" class="meter-1" cx="30" cy="30" r="22" data-offset="0" />
+                            </svg>
+                        </div>
+                    </div>
+                  </div>
                   <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
                 </div>
 

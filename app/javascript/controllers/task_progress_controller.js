@@ -5,8 +5,8 @@ export default class extends Controller {
   static targets = ["complete", "svg", "percentage"]
   connect() {
 
-    console.log(this.svgTarget.dataset.offset)
-    const loading = this.svgTarget.dataset.offset;
+    // console.log(this.svgTarget.dataset.offset)
+    // const loading = this.svgTarget.dataset.offset;
 
   }
 
