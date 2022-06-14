@@ -84,13 +84,6 @@ We must do <% if Project.contractor? %>
                 </div>
 
               </div>
-              <div class="flex-between" id="middle-section">
-                <div id="progress-bar"><i class="fa-solid fa-chart-pie"></i></div>
-                <div id="days">Days left:<br> <strong id="days-left"><%=((project.end_date - @time).to_i)%></strong></div>
-              </div>
-              <div id="location">
-                <i class="fa-solid fa-location-dot"></i> <%= project.client.address%>
-              </div>
             </div>
           </div>
         <% end %>

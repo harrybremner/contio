@@ -21,8 +21,9 @@ export default class extends Controller {
       }
     })
     const percentageComplete = totalCompleted / this.completeTargets.length;
-  
+
     this.svgTarget.style.strokeDashoffset = 380 - (360 * percentageComplete )
 
     this.percentageTarget.innerText = `${Math.round(percentageComplete * 100)}%`
   }
+}
