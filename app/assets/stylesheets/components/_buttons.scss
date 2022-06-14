@@ -131,12 +131,28 @@
 
   color: $white;
   font-size: 12px;
-  border: 4px solid $off-white;
   text-align: center;
   left: 147px;
   z-index: 1000;
+}
+
+.btn-task-form {
+  background-color: $orange;
+  border-radius: 50%;
+  padding: 5px 10px;
+  color: $white;
+  font-size: 16px;
+  text-align: center;
+  left: 147px;
+  z-index: 1000;
+  border: transparent;
+  font-size: 26px;
+  font-weight: 600;
 
 }
+
+
+
 
 .btn-close-x {
   border-radius: 50px;

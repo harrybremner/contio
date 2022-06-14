@@ -62,10 +62,24 @@
 
 #tag-high {
   font-size:12px;
-  background-color: $orange;
+  background-color: $orange;;
   color: $white;
   padding: 1px 8px 2px 8px;
   border-radius: 10px;
+
+}
+
+#tag-day {
+  font-size:12px;
+  background-color: rgb(200, 200, 200);
+  color: $white;
+  padding: 1px 8px 2px 8px;
+  border-radius: 10px;
+  font-weight: 300;
+  align-items: center;
+  i {
+    font-size: 14px;
+  }
 }
 
 
