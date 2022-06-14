@@ -1,8 +1,10 @@
 <div class = "app-footer">
   <div class="mobile-footer mobile-footer-links" data-controller="mobile-navbar">
-    <%= link_to "", projects_path, class: "mobile-footer-links fa-solid fa-house #{'active' if controller_name == 'projects' }", data:{action:"click->mobile-navbar#active"}%>
+    <%= link_to "", projects_path, class: "mobile-footer-links fa-solid fa-house #{'active' if controller_name == 'projects' || controller_name == 'tasks' }", data:{action:"click->mobile-navbar#active"}%>
     <%= link_to "", calendar_path, class: "mobile-footer-links fa-solid fa-calendar-days #{'active' if params[:action] == 'calendar' }" %>
+
     <div class="p-4"></div>
+    
     <%= link_to "", inbox_path, class: "mobile-footer-links fa-solid fa-inbox #{'active' if controller_name == 'messages' }" %>
     <%= link_to "", users_path, class: "mobile-footer-links fa-solid fa-user #{'active' if controller_name == 'users' }" %>
   </div>
