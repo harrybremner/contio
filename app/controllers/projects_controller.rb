@@ -45,17 +45,17 @@ class ProjectsController < ApplicationController
         authorization_error
       end
 
-      @in_progress_tasks = (@project.tasks.where(completed: false).count / @project.tasks.count) * 100
-      @completed_tasks = (@project.tasks.where(completed: true).count / @project.tasks.count) * 100
+      @in_progress_tasks = (@project.tasks.where(completed: false).count.to_f / @project.tasks.count.to_f) * 100
+      @completed_tasks = (@project.tasks.where(completed: true).count.to_f / @project.tasks.count.to_f) * 100
   end
 
   def create
     @project = Project.new(project_params)
     @project.contractor = current_user
-    @project.client = User.find(project_params[:client_id])
+    # @project.client = User.find(project_params[:client_id])
     if @project.save
-      
-      redirect_to projects_path(@projects)
+      p "hello from create method"
+      redirect_to projects_path()
     else
       render :index, status: :unprocessable_entity
     end
