@@ -55,7 +55,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :price, :start_date, :end_date, :priority)
+    params.require(:task).permit(:name, :description, :price, :start_date, :end_date)
   end
 
   def authorization_error

@@ -9,7 +9,7 @@ We must do <% if Project.contractor? %>
 <div class="main-container-all" id="task-page">
 
   <h1 class="subtask-h1" style="padding-bottom: 5px"><%= @project.name %></h1>
-  <div class="border-bottom" style="padding-left: 150px; padding-right: 150px"></div>
+
 
 
     <div class="task-intros" style="padding-left: 9px; padding-top: 15px;">
@@ -30,11 +30,11 @@ We must do <% if Project.contractor? %>
 
           <% else %>
 
-            <div >
-              <i class="fa-solid icon fa-list-check"></i>
+            <div style="padding-right: 2px; padding-top: 5px">
+              <i class="fa-solid fa-person-digging"></i>
             </div>
 
-            <div>
+            <div style="padding-left: 4px">
               <p> Contractor: </p>
               <p><strong><%= @project.contractor.first_name + " " + @project.contractor.last_name%></strong></p>
             </div>
@@ -46,7 +46,7 @@ We must do <% if Project.contractor? %>
 
         <div class="task-intro">
 
-          <div style="padding-top: 5px">
+          <div style="padding-top: 5px; margin-left: 30px">
             <i class="fa-solid icon fa-list-check"></i>
           </div>
 
@@ -54,6 +54,17 @@ We must do <% if Project.contractor? %>
             <p> Due: </p>
             <p> <strong><%= @project.end_date.strftime("%d %b") %> </strong></p>
           </div>
+
+        </div>
+
+        <div class="task-intro">
+        </div>
+
+        <div style="margin-left: 36px">
+
+              <%=  link_to project_messages_path(@project),  class:"btn btn-message" do %>
+              <i class="fa-solid fa-plus" style="font-size: 12px;"></i> New message
+              <% end %>
 
         </div>
 

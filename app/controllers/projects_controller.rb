@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
     # @project.client = User.find(project_params[:client_id])
     if @project.save
       p "hello from create method"
-      redirect_to projects_path()
+      redirect_to project_path(@project)
     else
       render :index, status: :unprocessable_entity
     end
