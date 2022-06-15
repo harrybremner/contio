@@ -8,10 +8,10 @@
 
 
 puts "Cleaning database..."
-User.destroy_all
-Project.destroy_all
-Task.destroy_all
 SubTask.destroy_all
+Task.destroy_all
+Project.destroy_all
+User.destroy_all
 
 puts "Creating new instances for User, Project, Task & Subtask..."
 
