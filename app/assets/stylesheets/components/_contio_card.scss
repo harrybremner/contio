@@ -4,12 +4,23 @@
   background-color: $off-white;
   padding-top: 10px;
   padding-bottom: 70px;
+  height: 100%;
+  h3 {
+    color: #5e6266;
+  }
+
+  h6 {
+    color: #5e6266;
+    margin: 0px;
+  }
+
+
 }
 
 .contio-cards {
   display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 5px 5px;
+  grid-template-columns: 48% 48%;
+  gap: 18px 10px;
 }
 
 
@@ -197,7 +208,7 @@
 }
 
 #project-header {
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

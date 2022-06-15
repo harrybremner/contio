@@ -1,7 +1,7 @@
 .inbox-background {
   background-color: $dark-blue;
   padding-top: 30px;
-
+  height: 100%;
 }
 
 #inbox-card {
@@ -10,6 +10,7 @@
   background-color: $off-white;
   padding: 10px;
   padding-top: 16px;
+  height: 100%;
 
   h2 {
     text-align: center;
