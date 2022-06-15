@@ -65,15 +65,21 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   .modal-header {
-   background-color: $off-white;
+    background-color: #15133c;
+    align-items: center;
+    justify-content: start;
+    color: white;
+    border-top-left-radius: 47px;
+    border-top-right-radius: 47px;
+    border-bottom: 0.5px solid;
   }
 }
 
 
 
 .modal-content {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   background-color: transparent;
   border: transparent;
     .modal-body {
@@ -83,9 +89,84 @@
 
 .transparent-colour{
   input{
-    background-color: transparent !important;
     border: 0px;
     border-bottom: 1px solid white;
     color: $off-white !important;
   }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1055;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  background-color: #f0eee8;
+  z-index: 1010;
+}
+
+.modal-backdrop {
+  z-index: 1009;
+}
+
+.modal-dialog {
+  position: fixed;
+  pointer-events: none;
+  bottom: 1px;
+  margin: 0;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.form-control {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.selection {
+  background-color: transparent;
+  color: white;
+}
+
+.select2-results {
+  color: white;
+}
+.select2-container--below {
+  color: white;
+}
+.transparent-colour .select2-container--open .selection {
+  display: none !important;
+}
+
+.select2-selection__rendered {
+  color: white !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #15133c !important;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  border: 1px solid #aaa;
+  background-color: transparent !important;
+}
+
+textarea.form-control {
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.mb-3 {
+  padding-right: 15px;
+}
+
+.form-select {
+  background-color: transparent;
 }

@@ -4,12 +4,12 @@ If they are a client, they cannot add any projects, tasks, subtasks.
 We must do <% if Project.contractor? %>
 <div class="profile-background">
 
+  <div id="profile-card">
+    <div class="main-container-all-profile">
+
   <% if @user.photo.key %>
     <%= cl_image_tag current_user.photo.key, class: "profile-avatar",  id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   <% end %>
-
-  <div id="profile-card">
-    <div class="main-container-all">
       <h2><%=@user.first_name%> <%= @user.last_name %></h2>
 
 

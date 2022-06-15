@@ -137,17 +137,22 @@
 }
 
 .btn-task-form {
-  background-color: $orange;
+  background-color: #EC994B;
   border-radius: 50%;
-  padding: 5px 10px;
-  color: $white;
+  color: #ffffff;
   font-size: 16px;
-  text-align: center;
   left: 147px;
   z-index: 1000;
   border: transparent;
-  font-size: 26px;
-  font-weight: 600;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 48px;
+
+  padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 17px;
+
+    border: none !important;
 
 }
 
@@ -157,7 +162,13 @@
 .btn-close-x {
   border-radius: 50px;
   height: 50px;
-  color: $dark-blue;
+  color: $white;
   width: 50px;
   font-size: 20px;
+}
+
+.form-btn-position {
+  display: flex;
+  justify-content: center;
+  border: none !important;
 }
