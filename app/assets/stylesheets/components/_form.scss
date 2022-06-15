@@ -42,7 +42,6 @@
 // }
 
   label {
-    color: rgb(171, 171, 171);
     font-size: 14px;
     font-weight: 300;
   }
@@ -125,7 +124,6 @@
 
 .form-control {
   background-color: transparent !important;
-  color: white !important;
 }
 
 .selection {
@@ -169,4 +167,8 @@ textarea.form-control {
 
 .form-select {
   background-color: transparent;
+}
+
+.form-style {
+    color: rgb(166, 166, 166) !important;
 }
