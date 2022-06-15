@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class SubTask < ApplicationRecord
   belongs_to :task
   validates :name, presence: true
