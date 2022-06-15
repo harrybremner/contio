@@ -1,0 +1,63 @@
+ <div class="task-intros" style="padding-left: 9px; padding-top: 15px;">
+
+        <div class="task-intro">
+
+
+          <% if current_user.is_contractor %>
+
+            <div style="padding-right: 2px; padding-top: 5px">
+              <i class="fa-solid fa-people-roof"></i>
+            </div>
+
+            <div style="padding-left: 4px">
+              <p> Client name: </p>
+              <p> <strong><%= project.client.first_name + " " + project.client.last_name%></strong> </p>
+            </div>
+
+          <% else %>
+
+            <div style="padding-right: 2px; padding-top: 5px">
+              <i class="fa-solid fa-person-digging"></i>
+            </div>
+
+            <div style="padding-left: 4px">
+              <p> Contractor: </p>
+              <p><strong><%= project.contractor.first_name + " " + project.contractor.last_name%></strong></p>
+            </div>
+
+          <% end %>
+
+
+        </div>
+
+
+         <div class="task-intro">
+
+          <div style="padding-top: 5px; margin-left: 30px">
+            <i class="fa-solid icon fa-list-check"></i>
+          </div>
+
+          <div>
+            <p> Due: </p>
+            <p> <strong><%= project.end_date.strftime("%d %b") %> </strong></p>
+          </div>
+
+        </div>
+        
+        <div class="task-intro">
+              <%=  link_to project_messages_path(project),  class:"btn btn-message" do %>
+              <i class="fa-solid fa-plus" style="font-size: 12px;"></i> New message
+              <% end %>
+        </div>
+
+        <div style="margin-left: 36px">
+
+
+        <div class="task-intro">
+              <%=  link_to project_path(project),  class:"btn btn-message" do %>
+              <i class="fa-solid fa-plus" style="font-size: 12px;"></i> View Project
+              <% end %>
+        </div>
+
+        </div>
+</div>

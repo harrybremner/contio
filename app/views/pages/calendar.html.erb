@@ -3,11 +3,28 @@
     <%= date %>
 
     <% projects.each do |project| %>
-      <%=  link_to project_path(project), style:"text-decoration:none !important" do %>
       <div class="meeting">
-        <p><%= project.id %></p>
+        <p data-bs-toggle="modal" data-bs-target="#exampleModal">Project: <br><%= project.id %></p>
       </div>
+
+    <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> <%= project.name %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render "projects/show_calendar", project: project %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <% end %>
-    <% end %>
   <% end %>
 </div>
