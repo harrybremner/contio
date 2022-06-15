@@ -30,11 +30,11 @@ We must do <% if Project.contractor? %>
 
           <% else %>
 
-            <div >
-              <i class="fa-solid icon fa-list-check"></i>
+            <div style="padding-right: 2px; padding-top: 5px">
+              <i class="fa-solid fa-person-digging"></i>
             </div>
 
-            <div>
+            <div style="padding-left: 4px">
               <p> Contractor: </p>
               <p><strong><%= @project.contractor.first_name + " " + @project.contractor.last_name%></strong></p>
             </div>
