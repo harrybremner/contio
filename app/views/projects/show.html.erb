@@ -5,7 +5,18 @@ If they are a client, they cannot add edit the project or task or add new ones.
 We must do <% if Project.contractor? %>
 
 
-<div class="logo d-flex justify-content-center"><h2>contio</h2></div>
+<div class="logo d-flex justify-content-center">
+  <div class="col" style="padding-left: 15px; padding-top: 2px">
+    <%=  link_to projects_path do %>
+     <h2> <i class="fa-solid fa-chevron-left"></i></h2>
+    <%end%>
+  </div>
+  <div class="col" style="padding-left: 28px">
+  <h2>contio</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
 <div class="main-container-all" id="task-page">
 
   <h1 class="subtask-h1" style="padding-bottom: 5px"><%= @project.name %></h1>
