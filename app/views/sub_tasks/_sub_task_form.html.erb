@@ -1,7 +1,11 @@
-<div class="form">
-<%= simple_form_for [@project, @task, @sub_task] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.submit class: "btn-form" %>
-<% end %>
+<div class="form-style">
+  <div class="form">
+    <%= simple_form_for [@project, @task, @sub_task] do |f| %>
+    <div class="transparent-colour">
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.submit class: "btn-task-form" %>
+    </div>
+    <% end %>
+  </div>
 </div>

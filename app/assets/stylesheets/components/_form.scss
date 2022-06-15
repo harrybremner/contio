@@ -138,7 +138,7 @@
   color: white;
 }
 .transparent-colour .select2-container--open .selection {
-  display: none !important;
+  // display: none !important;
 }
 
 .select2-selection__rendered {
@@ -171,4 +171,10 @@ textarea.form-control {
 
 .form-style {
     color: rgb(166, 166, 166) !important;
+
+  textarea.form-control {
+      border: none;
+      border-bottom: 1px solid white;
+      color: white !important;
+  }
 }
