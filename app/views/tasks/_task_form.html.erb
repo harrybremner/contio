@@ -1,10 +1,19 @@
-<div class="form">
+<div class="form-style">
 <%= simple_form_for [@project, @task] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date"} %>
-  <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date"} %>
-  <%= f.submit class: "btn-form" %>
+  <div class="transparent-colour">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <div class="d-flex justify-content-between">
+      <%= f.input :priority, class: 'pe-2' %>
+      <%= f.input :price %>
+
+    </div>
+    <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date"} %>
+    <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date"} %>
+
+    <div class="form-btn-position">
+      <%= f.submit class: "btn-task-form", value:'+' %>
+    </div>
+  </div>
 <% end %>
 </div>
