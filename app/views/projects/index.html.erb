@@ -45,9 +45,11 @@ We must do <% if Project.contractor? %>
 
         <div class="d-flex  justify-content-between flex-column">
           <div>
-            <div class="flex-between" id="card-top" style="font-size: 24px">
 
-              <% if ((project.end_date - @time).to_i) < 7 %>
+            <div class="flex-between" id="card-top" style="font-size: 24px">
+              <%if project.tasks.count == project.tasks.where(completed: true).count && project.tasks.count > 0 %>
+                <div id="tag-completed">Done</div>
+              <% elsif ((project.end_date - @time).to_i) < 7 %>
                 <div id="tag-high">High</div>
               <% elsif ((project.end_date - @time).to_i) >= 7 && ((project.end_date - @time).to_i) <= 14 %>
                 <div id="tag-medium">Medium</div>
@@ -56,7 +58,9 @@ We must do <% if Project.contractor? %>
               <% end %>
 
               <div class="flex-between">
-                <div id="tag-day">  <i class="fa-solid fa-clock"></i> <%=((project.end_date - @time).to_i)%> days</div>
+                <% if project.tasks.count > project.tasks.where(completed: true).count || project.tasks.count == 0 %>
+                <div id="tag-day">  <i class="fa-solid fa-clock fa-1x"></i> <%=((project.end_date - @time).to_i)%> days</div>
+                <%end%>
               </div>
 
               <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
@@ -75,7 +79,7 @@ We must do <% if Project.contractor? %>
                 <% end %>
               </div>
 
-                            <%# Progress bar %>
+
               <% if project.tasks.count > 0 %>
               <div class="flex-container-progress-index py-2">
                 <div>
@@ -83,10 +87,17 @@ We must do <% if Project.contractor? %>
                     <p style="font-size:10px; font-weight:300; margin:0px">Progress:</p>
                     <p style="font-size:10px; font-weight:300; margin:0px"><%= ((project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100).truncate() %>%</p>
                   </div>
+                  <% if project.tasks.where(completed: true) == project.tasks.all %>
+                  <div class="progress progress-index mb-1">
+
+                    <div class="progress-bar bg-success" role="progressbar" style="width:<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>%;" aria-valuenow="<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  <%else%>
                   <div class="progress progress-index mb-1">
 
                     <div class="progress-bar bg-warning" role="progressbar" style="width:<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>%" aria-valuenow="<%= (project.tasks.where(completed: true).count.to_f / project.tasks.count.to_f) * 100 %>" aria-valuemin="0" aria-valuemax="100">
                     </div>
+                  <%end%>
                   </div>
                 </div>
               </div>
