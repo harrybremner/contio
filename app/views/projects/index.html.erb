@@ -9,7 +9,7 @@ We must do <% if Project.contractor? %>
 
 
   <h3 style="padding-bottom:10px">Dashboard</h3>
-  <h6>Summary:</h6>
+  <h6 style="padding-bottom: 7px; padding-left: 3px">Summary:</h6>
     <div class="contio-card flex-around">
       <div class="date-card">
           <div style="margin:0" id="title">Today:</div>
@@ -40,7 +40,7 @@ We must do <% if Project.contractor? %>
   <div class="contio-cards" data-controller="sortable">
     <% @projects.each do |project| %>
 
-      <div class="contio-card" >
+      <div class="contio-card">
         <%= link_to project_path(project), style:"text-decoration:none" do %>
 
         <div class="d-flex  justify-content-between flex-column">

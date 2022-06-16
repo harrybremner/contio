@@ -21,6 +21,7 @@
   display: grid;
   grid-template-columns: 48% 48%;
   gap: 18px 10px;
+
 }
 
 
@@ -35,6 +36,7 @@
   background-color: $white;
   position: relative;
   text-decoration: none;
+  padding-top:3px;
 }
 
 .flex-around {
