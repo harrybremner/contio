@@ -1,6 +1,7 @@
 <% if message.user.is_contractor? %>
 
-  <div style="border-radius: 25px 25px 25px 5px; background-color: burlywood; padding-top: 5px; padding-left:5px">
+  <div style="border-radius: 25px 25px 25px 5px; background-color: burlywood; padding-top: 5px; padding-left:5px"
+  data-project-subscription-target="message" data-sender="<%= message.user.id %>" data-sender="<%= message.user.first_name %>">
 
     <div id="message-<%= message.id %>">
       <small style="margin-left: 15px">
