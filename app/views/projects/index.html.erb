@@ -42,20 +42,21 @@ We must do <% if Project.contractor? %>
 
       <div class="contio-card">
         <%= link_to project_path(project), style:"text-decoration:none" do %>
-
-        <div class="d-flex  justify-content-between flex-column">
           <div>
 
             <div class="flex-between" id="card-top" style="font-size: 24px">
-              <%if project.tasks.count == project.tasks.where(completed: true).count && project.tasks.count > 0 %>
-                <div id="tag-completed">Done</div>
-              <% elsif ((project.end_date - @time).to_i) < 7 %>
-                <div id="tag-high">High</div>
-              <% elsif ((project.end_date - @time).to_i) >= 7 && ((project.end_date - @time).to_i) <= 14 %>
-                <div id="tag-medium">Med</div>
-              <% else %>
-                <div id="tag-low">Low</div>
-              <% end %>
+
+              <div>
+                <%if project.tasks.count == project.tasks.where(completed: true).count && project.tasks.count > 0 %>
+                  <div id="tag-completed">Done</div>
+                <% elsif ((project.end_date - @time).to_i) < 7 %>
+                  <div id="tag-high">High</div>
+                <% elsif ((project.end_date - @time).to_i) >= 7 && ((project.end_date - @time).to_i) <= 14 %>
+                  <div id="tag-medium">Med</div>
+                <% else %>
+                  <div id="tag-low">Low</div>
+                <% end %>
+              </div>
 
               <div class="flex-between">
                 <% if project.tasks.count > project.tasks.where(completed: true).count || project.tasks.count == 0 %>
@@ -63,8 +64,12 @@ We must do <% if Project.contractor? %>
                 <%end%>
               </div>
 
-              <div style="color:#d9d9d9"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></div>
+              <div style="color:#d9d9d9">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </div>
             </div>
+
             <div id="project-name" style="padding-right: 10px;padding-left: 10px"><%= project.name %></div>
           </div>
 
@@ -116,7 +121,6 @@ We must do <% if Project.contractor? %>
               </div>
           </div>
 
-        </div>
 
 
 
