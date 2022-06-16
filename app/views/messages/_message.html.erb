@@ -1,7 +1,8 @@
 <% if message.user.is_contractor? %>
 
-  <div style="border-radius: 25px 25px 5px 25px; background-color: #0C0D36; padding-top: 5px; padding-left:5px;">
 
+  <div style="border-radius: 25px 25px 5px 25px; background-color: #0C0D36; padding-top: 5px; padding-left:5px;">
+    
     <div id="message-<%= message.id %>">
       <small style="margin-left: 15px">
         <strong style="color: burlywood;"><%= message.user.first_name %></strong>
