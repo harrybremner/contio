@@ -1,0 +1,22 @@
+.message-left {
+  border-radius: 25px 25px 25px 5px;
+  background-color: burlywood;
+  padding-top: 5px;
+  padding-left:5px;
+  color: dimgrey;
+  strong {
+    color: dimgrey;
+  }
+}
+
+
+.message-right {
+  border-radius: 25px 25px 5px 25px;
+  background-color: #0C0D36;
+  padding-top: 5px;
+  padding-left:5px;
+  color: burlywood;
+  strong {
+    color: burlywood;
+  }
+}
