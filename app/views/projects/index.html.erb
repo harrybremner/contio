@@ -52,7 +52,7 @@ We must do <% if Project.contractor? %>
               <% elsif ((project.end_date - @time).to_i) < 7 %>
                 <div id="tag-high">High</div>
               <% elsif ((project.end_date - @time).to_i) >= 7 && ((project.end_date - @time).to_i) <= 14 %>
-                <div id="tag-medium">Medium</div>
+                <div id="tag-medium">Med</div>
               <% else %>
                 <div id="tag-low">Low</div>
               <% end %>
