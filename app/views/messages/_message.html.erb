@@ -1,21 +1,8 @@
 <% if message.user.is_contractor? %>
 
-  <div style="border-radius: 25px 25px 25px 5px; background-color: burlywood; padding-top: 5px; padding-left:5px"
-  data-project-subscription-target="message" data-sender="<%= message.user.id %>" data-sender="<%= message.user.first_name %>">
-
-    <div id="message-<%= message.id %>">
-      <small style="margin-left: 15px">
-        <strong style="color: dimgrey;"><%= message.user.first_name %></strong>
-        <i style="color: grey;"><%= message.created_at.strftime(" %b %e at %l:%M %p") %></i>
-      </small>
-      <p style="margin-left: 15px; margin-right: 15px; padding-bottom: 10px; color: white;"><%= message.content %></p>
-    </div>
-  </div>
-
-<%else%>
 
   <div style="border-radius: 25px 25px 5px 25px; background-color: #0C0D36; padding-top: 5px; padding-left:5px;">
-
+    
     <div id="message-<%= message.id %>">
       <small style="margin-left: 15px">
         <strong style="color: burlywood;"><%= message.user.first_name %></strong>
@@ -25,4 +12,18 @@
     </div>
   </div>
 
+
+<%else%>
+
+
+  <div style="border-radius: 25px 25px 25px 5px; background-color: burlywood; padding-top: 5px; padding-left:5px">
+
+    <div id="message-<%= message.id %>">
+      <small style="margin-left: 15px">
+        <strong style="color: dimgrey;"><%= message.user.first_name %></strong>
+        <i style="color: grey;"><%= message.created_at.strftime(" %b %e at %l:%M %p") %></i>
+      </small>
+      <p style="margin-left: 15px; margin-right: 15px; padding-bottom: 10px; color: white;"><%= message.content %></p>
+    </div>
+  </div>
 <%end%>
