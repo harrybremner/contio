@@ -1,7 +1,15 @@
 #subtaskcheckbox {
-  margin-top: 18px;
-  margin-left: 15px;
+  padding: 10px;
+  border-radius: 12px;
+  #subtaskcheckbox::before {
+    padding: 10px;
+    border-radius: 12px;
+  }
 
+  input[type="checkbox"]::before {
+      padding: 10px;
+      border-radius: 12px;
+  }
 }
 
 

@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   has_many :sub_tasks, dependent: :destroy
   validates :name, presence: true
   validates :price, presence: true
-  validates :description, presence: true
+  validates :description, presence: false
   validates_presence_of :start_date, :end_date
   validate :end_date_is_after_start_date, on: :create
   validate :start_date_is_before_today, on: :create

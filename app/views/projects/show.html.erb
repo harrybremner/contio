@@ -94,7 +94,7 @@ We must do <% if Project.contractor? %>
 
       <div>
 
-        <div><strong>Progress bar</strong> </div>
+        <div><strong>Progress bar:</strong> </div>
           <p class="py-2" style="margin:0px">You have <strong><%= @project.tasks.where(completed: false).count %> tasks</strong> remaining.</p>
 
         <div class="progress mb-2">
@@ -107,16 +107,16 @@ We must do <% if Project.contractor? %>
             <div class="vl-orange">
 
               <div class="vl-padding">
-                <strong>Pending: </strong>
-                <p><%= @project.tasks.where(completed: false).count %> tasks</p>
+                <div style="font-weight: 200">Pending:</div>
+                <p style="font-weight: 600"><%= @project.tasks.where(completed: false).count %> tasks</p>
               </div>
 
             </div>
 
             <div class="vl-green">
               <div class="vl-padding">
-                <strong>Completed: </strong>
-                <p><%= @project.tasks.where(completed: true).count %> tasks</p>
+                <div style="font-weight: 200">Completed: </div>
+                <p style="font-weight: 600"><%= @project.tasks.where(completed: true).count %> tasks</p>
               </div>
             </div>
 
@@ -219,5 +219,4 @@ We must do <% if Project.contractor? %>
     </div>
   </div>
 
-  </div>
 </div>
