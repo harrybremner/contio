@@ -21,7 +21,7 @@ between the users %>
 
 
   <div class="messages" data-project-subscription-target="messages">
-    <% @project.messages.each do |message| %>
+    <% @project.messages.order(:created_at).each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
