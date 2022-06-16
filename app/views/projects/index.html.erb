@@ -49,9 +49,9 @@ We must do <% if Project.contractor? %>
             <div class="flex-between" id="card-top" style="font-size: 24px">
               <%if project.tasks.count == project.tasks.where(completed: true).count && project.tasks.count > 0 %>
                 <div id="tag-completed">Done</div>
-              <% elsif ((project.end_date - @time).to_i) < 30 %>
+              <% elsif ((project.end_date - @time).to_i) < 7 %>
                 <div id="tag-high">High</div>
-              <% elsif ((project.end_date - @time).to_i) >= 60 && ((project.end_date - @time).to_i) <= 120 %>
+              <% elsif ((project.end_date - @time).to_i) >= 7 && ((project.end_date - @time).to_i) <= 14 %>
                 <div id="tag-medium">Medium</div>
               <% else %>
                 <div id="tag-low">Low</div>
