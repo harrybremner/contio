@@ -33,7 +33,7 @@ We must do <% if Project.contractor? %>
                                         <circle class="bg" cx="57" cy="57" r="52" />
                                         <circle data-task-progress-target="svg" style="stroke-dashoffset: <%= 380 - (360.0 * @percentage / 100.0) %>; transition: stroke-dashoffset 1.5s;"class="meter-1" cx="57" cy="57" r="52" />
                                       </svg>
-                                      <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:27%"> <%= @percentage.round %> % </h2>
+                                      <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:25%"> <%= @percentage.round %> % </h2>
                                   </div>
                                 </div>
                                 <% end %>
