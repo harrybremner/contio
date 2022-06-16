@@ -26,7 +26,7 @@ We must do <% if Project.contractor? %>
                 <div class="row" style="padding-top: 5px; padding-bottom: 8px">
 
                             <div class="col">
-
+                              <% unless @task.sub_tasks.count == 0 %>
                                 <div class="progresswheel">
                                   <div style="position:relative; padding-left:10px">
                                         <svg>
@@ -36,6 +36,7 @@ We must do <% if Project.contractor? %>
                                       <h2 data-task-progress-target="percentage" style="position:absolute; top:37%; left:27%"> <%= @percentage.round %> % </h2>
                                   </div>
                                 </div>
+                                <% end %>
                             </div>
 
                             <div class="col" >
