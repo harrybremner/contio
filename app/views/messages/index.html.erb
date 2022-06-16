@@ -3,7 +3,9 @@ between the users %>
 
 <div class="container chatroom"
   data-controller="project-subscription"
-  data-project-subscription-project-id-value="<%= @project.id %>">
+  data-project-subscription-project-id-value="<%= @project.id %>"
+  data-current-user="<%= current_user.id %>"
+  data-current-user-name="<%= current_user.first_name %>">
   <div style="padding-left: 15px; padding-top: 2px">
     <div class="row">
         <%=  link_to inbox_path do %>
@@ -12,14 +14,14 @@ between the users %>
         <%end%>
       </div>
       <div class="col" style="margin: -18px">
-        <h1>#<%= @project.name %></h1>
+        <h1><%= @project.name %></h1>
       </div>
     </div>
   </div>
 
 
   <div class="messages" data-project-subscription-target="messages">
-    <% @project.messages.each do |message| %>
+    <% @project.messages.order(:created_at).each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
