@@ -43,9 +43,9 @@ This view is controlled by the messages_index action in the projects_controller 
 
                           <div class="col-8" style="color: grey">
                             <% if project.messages.last.user == current_user %>
-                              <p style="margin:0px"><strong>You: </strong><%=project.messages.last.content%></p>
+                              <p style="margin:0px; font-size:12px;"><strong>You: </strong><%=project.messages.last.content%></p>
                             <% else %>
-                              <p style="margin:0px"><strong><%= project.messages.last.user.first_name %>:</strong> <%=project.messages.last.content%></p>
+                              <p style="margin:0px; font-size:12px;"><strong><%= project.messages.last.user.first_name %>:</strong> <%=project.messages.last.content%></p>
                             <% end %>
                           </div>
 
