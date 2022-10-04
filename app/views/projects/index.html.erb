@@ -45,6 +45,7 @@ We must do <% if Project.contractor? %>
           <div>
 
             <div class="flex-between" id="card-top" style="font-size: 24px">
+
               <div>
                 <%if project.tasks.count == project.tasks.where(completed: true).count && project.tasks.count > 0 %>
                   <div id="tag-completed">Done</div>
@@ -63,7 +64,7 @@ We must do <% if Project.contractor? %>
                 <%end%>
               </div>
 
-              <div style="color:#d9d9d9" class="d-flex">
+              <div style="color:#d9d9d9">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </div>
