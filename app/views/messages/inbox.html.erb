@@ -10,46 +10,47 @@ This view is controlled by the messages_index action in the projects_controller 
   <div id="inbox-card">
     <div class="main-container-all">
       <h2>Inbox</h2>
-      <div class="border-bottom" style="padding-top: 5px"></div>
       <% @projects.each do |project| %>
-                  <div class="card-product-infos">
-      <br>
-        <%= link_to project_messages_path(project), style:"text-decoration:none" do %>
-          <div class="card-product-inbox" style="display: flex">
-            <% if project.messages.last %>
-                <% if project.contractor.photo.key && project.client.photo.key %>
-                  <div>
-                    <% if project.contractor == current_user %>
-                      <%= cl_image_tag project.client.photo.key, class: "inbox-img" %>
-                    <% else %>
-                      <%= cl_image_tag project.contractor.photo.key, class: "inbox-img" %>
-                    <% end %>
-                  </div>
-                <% end %>
-                    <div class="row" style="color: darkgrey">
-                    <h5>Project: <%= project.name  %></h5>
+        <div class="card-product-infos">
+          <br>
+          <%= link_to project_messages_path(project), style:"text-decoration:none" do %>
+            <div class="card-product-inbox" style="display: flex">
+              <% if project.messages.last %>
+                  <% if project.contractor.photo.key && project.client.photo.key %>
+                    <div>
+                      <% if project.contractor == current_user %>
+                        <%= cl_image_tag project.client.photo.key, class: "inbox-img" %>
+                      <% else %>
+                        <%= cl_image_tag project.contractor.photo.key, class: "inbox-img" %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                      <div class="row" style="color: darkgrey">
+                      <h5>Project: <%= project.name  %></h5>
 
-                      <div class="col-8" style="color: grey">
-                        <% if project.messages.last.user == current_user %>
-                          <p style="margin:0px"><strong>You: </strong><%=project.messages.last.content%></p>
-                        <% else %>
-                          <p style="margin:0px"><strong><%= project.messages.last.user.first_name %>:</strong> <%=project.messages.last.content%></p>
-                        <% end %>
-                      </div>
-                      <div class="col" style="text-align: right; color:orange">
-                        <% if project.messages.last.created_at.strftime('%d/%m/%Y') == Date.today.strftime('%d/%m/%Y') %>
-                          <p><em>Sent at: <%= project.messages.last.created_at.strftime('%H:%M')%></em></p>
-                        <% else %>
-                          <p><em><%=  project.messages.last.created_at.strftime('%d.%m.%y') %></em></p>
-                        <% end %>
+                        <div class="col-8" style="color: grey">
+                          <% if project.messages.last.user == current_user %>
+                            <p style="margin:0px"><strong>You: </strong><%=project.messages.last.content%></p>
+                          <% else %>
+                            <p style="margin:0px"><strong><%= project.messages.last.user.first_name %>:</strong> <%=project.messages.last.content%></p>
+                          <% end %>
+                        </div>
+                        
+                        <div class="col" style="text-align: right; color:orange">
+                          <% if project.messages.last.created_at.strftime('%d/%m/%Y') == Date.today.strftime('%d/%m/%Y') %>
+                            <p><em>Sent at: <%= project.messages.last.created_at.strftime('%H:%M')%></em></p>
+                          <% else %>
+                            <p><em><%=  project.messages.last.created_at.strftime('%d.%m.%y') %></em></p>
+                          <% end %>
+                        </div>
+
+
                       </div>
                     </div>
-                  </div>
-            <% end %>
-          </div>
-        <% end %>
-        <div class="border-bottom"></div>
-      <% end %>
-    </div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
